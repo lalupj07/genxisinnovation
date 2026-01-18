@@ -54,7 +54,7 @@ const About = () => {
                                 border: `1px solid ${theme.palette.divider}`
                             }}>
                                 <Avatar
-                                    src="/images/founder_profile.png"
+                                    src="/images/lalu_james.jpg"
                                     sx={{ width: 120, height: 120, border: `2px solid ${theme.palette.primary.main}` }}
                                 />
                             </Box>
@@ -70,7 +70,7 @@ const About = () => {
                                         fontWeight: 600
                                     }}
                                 />
-                                <Typography variant="h4" sx={{ fontWeight: 800, mb: 1 }}>Lalu P J</Typography>
+                                <Typography variant="h4" sx={{ fontWeight: 800, mb: 1 }}>Lalu James</Typography>
                                 <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3 }}>
                                     Passionate about Rust, React, and building systems that matter. Turning coffee into code since 2018.
                                 </Typography>
