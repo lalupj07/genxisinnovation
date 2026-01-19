@@ -4,8 +4,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
 import Hero from './components/Sections/Hero';
-import About from './components/Sections/About';
+import TechStack from './components/Sections/TechStack';
+import Services from './components/Sections/Services';
 import Products from './components/Sections/Products';
+import Insights from './components/Sections/Insights';
+import About from './components/Sections/About';
+import Contact from './components/Sections/Contact';
 import SmoothScroll from './components/UI/SmoothScroll';
 
 function App() {
@@ -25,10 +29,15 @@ function App() {
             <Navbar />
             <main>
               <Hero />
+              <TechStack />
               <Products />
+              <Services />
+              <Insights />
               <About />
+              <Contact />
             </main>
             <Footer />
+
           </Box>
         </Router>
       </SmoothScroll>

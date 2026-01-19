@@ -76,9 +76,11 @@ const Navbar = () => {
                         <Stack direction="row" spacing={6}>
                             {[
                                 { label: 'Home', href: '#home' },
-                                { label: 'Work', href: '#products' },
-                                { label: 'Contact', href: '#footer' },
-                                { label: 'About', href: '#about' }
+                                { label: 'Products', href: '#products' },
+                                { label: 'Services', href: '#services' },
+                                { label: 'Insights', href: '#insights' },
+                                { label: 'About', href: '#about' },
+                                { label: 'Contact', href: '#contact' }
                             ].map((nav) => (
                                 <Button
                                     key={nav.label}
