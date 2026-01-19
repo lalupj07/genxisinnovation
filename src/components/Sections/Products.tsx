@@ -208,7 +208,8 @@ const Products = () => {
                                             backdropFilter: 'blur(20px)',
                                             border: `1px solid ${isActive ? theme.palette.primary.main : theme.palette.divider}`,
                                             boxShadow: isActive ? `0 20px 50px ${theme.palette.primary.main}20` : 'none',
-                                            transition: 'border-color 0.3s'
+                                            transition: 'border-color 0.3s',
+                                            textAlign: 'center'
                                         }}
                                     >
                                         <Box>
@@ -224,7 +225,7 @@ const Products = () => {
                                             <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
                                                 {product.desc}
                                             </Typography>
-                                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, justifyContent: 'center' }}>
                                                 {product.tags.map(tag => (
                                                     <Chip key={tag} label={tag} size="small" sx={{ bgcolor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)' }} />
                                                 ))}

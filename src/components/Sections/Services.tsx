@@ -50,7 +50,7 @@ const Services = () => {
                     </Typography>
                 </Box>
 
-                <Grid container spacing={4}>
+                <Grid container spacing={4} justifyContent="center">
                     {services.map((service, index) => (
                         <Grid size={{ xs: 12, md: 4 }} key={index}>
                             <motion.div
@@ -67,6 +67,7 @@ const Services = () => {
                                         bgcolor: isDark ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)',
                                         border: `1px solid ${theme.palette.divider}`,
                                         borderRadius: 4,
+                                        textAlign: 'center',
                                         transition: 'all 0.3s ease',
                                         '&:hover': {
                                             transform: 'translateY(-10px)',
@@ -75,7 +76,7 @@ const Services = () => {
                                         }
                                     }}
                                 >
-                                    <CardContent>
+                                    <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                         <Box sx={{
                                             mb: 3,
                                             p: 2,
@@ -86,11 +87,11 @@ const Services = () => {
                                         }}>
                                             {service.icon}
                                         </Box>
-                                        <Typography variant="h5" sx={{ mb: 2, fontWeight: 700 }}>{service.title}</Typography>
-                                        <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3, minHeight: 60 }}>
+                                        <Typography variant="h5" align="center" sx={{ mb: 2, fontWeight: 700 }}>{service.title}</Typography>
+                                        <Typography variant="body2" align="center" sx={{ color: 'text.secondary', mb: 3, minHeight: 60 }}>
                                             {service.desc}
                                         </Typography>
-                                        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 4 }}>
+                                        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 4, justifyContent: 'center' }}>
                                             {service.tags.map(tag => (
                                                 <Typography key={tag} variant="caption" sx={{
                                                     px: 1, py: 0.5,
@@ -104,7 +105,7 @@ const Services = () => {
                                         </Box>
                                         <Button
                                             endIcon={<ArrowForwardIcon />}
-                                            sx={{ pl: 0, color: 'primary.main' }}
+                                            sx={{ pl: 0, color: 'primary.main', mx: 'auto' }}
                                         >
                                             Learn More
                                         </Button>

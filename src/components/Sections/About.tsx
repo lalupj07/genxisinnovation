@@ -149,7 +149,7 @@ const About = () => {
                         </Box>
 
                         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, justifyContent: 'center' }}>
-                            <Box sx={{ flex: 1, p: 4, borderRadius: 4, bgcolor: isDark ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.5)', border: `1px solid ${theme.palette.divider}` }}>
+                            <Box sx={{ flex: 1, p: 4, borderRadius: 4, bgcolor: isDark ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.5)', border: `1px solid ${theme.palette.divider}`, textAlign: 'center' }}>
                                 <Box sx={{ p: 1.5, width: 'fit-content', borderRadius: 2, bgcolor: isDark ? 'rgba(0, 240, 255, 0.1)' : 'rgba(0, 240, 255, 0.05)', color: 'primary.main', mb: 2, mx: 'auto' }}>
                                     <SecurityIcon />
                                 </Box>
@@ -157,7 +157,7 @@ const About = () => {
                                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>Our products, like FamBudget and GenXLink, are built with a "Local First" architecture to ensure your data stays yours.</Typography>
                             </Box>
 
-                            <Box sx={{ flex: 1, p: 4, borderRadius: 4, bgcolor: isDark ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.5)', border: `1px solid ${theme.palette.divider}` }}>
+                            <Box sx={{ flex: 1, p: 4, borderRadius: 4, bgcolor: isDark ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.5)', border: `1px solid ${theme.palette.divider}`, textAlign: 'center' }}>
                                 <Box sx={{ p: 1.5, width: 'fit-content', borderRadius: 2, bgcolor: isDark ? 'rgba(157, 0, 255, 0.1)' : 'rgba(157, 0, 255, 0.05)', color: 'secondary.main', mb: 2, mx: 'auto' }}>
                                     <CodeIcon />
                                 </Box>
@@ -165,7 +165,7 @@ const About = () => {
                                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>We utilize modern, low-level languages like Rust and optimized frameworks to deliver blazing fast user experiences.</Typography>
                             </Box>
 
-                            <Box sx={{ flex: 1, p: 4, borderRadius: 4, bgcolor: isDark ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.5)', border: `1px solid ${theme.palette.divider}` }}>
+                            <Box sx={{ flex: 1, p: 4, borderRadius: 4, bgcolor: isDark ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.5)', border: `1px solid ${theme.palette.divider}`, textAlign: 'center' }}>
                                 <Box sx={{ p: 1.5, width: 'fit-content', borderRadius: 2, bgcolor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0,0,0, 0.05)', color: 'text.primary', mb: 2, mx: 'auto' }}>
                                     <AutoGraphIcon />
                                 </Box>
