@@ -4,11 +4,13 @@ import { motion } from 'framer-motion';
 
 const techs = [
     { name: 'Rust', color: '#DEA584', desc: 'Core Logic & Security' },
-    { name: 'React', color: '#61DAFB', desc: 'UI & Interactions' },
-    { name: 'Electron', color: '#47848F', desc: 'Cross-Platform Desktop' },
-    { name: 'TypeScript', color: '#3178C6', desc: 'Type Safety' },
-    { name: 'Node.js', color: '#339933', desc: 'Backend Services' },
-    { name: 'WebAssembly', color: '#654FF0', desc: 'High Performance' }
+    { name: 'Flutter', color: '#02569B', desc: 'Cross-Platform App UI' },
+    { name: 'Dart', color: '#0175C2', desc: 'Client-Optimized App Logic' },
+    { name: 'React', color: '#61DAFB', desc: 'Web UI & Interactions' },
+    { name: 'Electron', color: '#47848F', desc: 'Desktop Logic Container' },
+    { name: 'TypeScript', color: '#3178C6', desc: 'Static Type Safety' },
+    { name: 'Node.js', color: '#339933', desc: 'Scalable Backend Services' },
+    { name: 'WebAssembly', color: '#654FF0', desc: 'High Performance Native' }
 ];
 
 const TechStack = () => {

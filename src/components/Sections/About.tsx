@@ -72,7 +72,7 @@ const About = () => {
                                 />
                                 <Typography variant="h4" sx={{ fontWeight: 800, mb: 1 }}>Lalu James</Typography>
                                 <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3 }}>
-                                    Passionate about Rust, React, and building systems that matter. Turning coffee into code since 2018.
+                                    Expert in Rust, Flutter, and build system architectures. Crafting high-performance digital experiences since 2018.
                                 </Typography>
 
                                 <Stack direction="row" spacing={2} justifyContent="center" sx={{ mb: 4 }}>
@@ -115,7 +115,7 @@ const About = () => {
                                 }}>
                                     <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1 }}>Core Technologies</Typography>
                                     <Stack direction="row" spacing={1} justifyContent="center" flexWrap="wrap" useFlexGap>
-                                        {['Rust', 'React', 'TypeScript', 'Electron'].map(tech => (
+                                        {['Rust', 'Flutter', 'Dart', 'React', 'TypeScript', 'Electron'].map(tech => (
                                             <Chip key={tech} label={tech} size="small" variant="outlined" sx={{ borderRadius: 1 }} />
                                         ))}
                                     </Stack>

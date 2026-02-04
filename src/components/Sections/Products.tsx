@@ -7,20 +7,52 @@ import { motion } from 'framer-motion';
 
 const products = [
     {
-        title: 'FamBudget',
-        desc: 'A powerful, privacy-focused desktop application designed to help families manage their finances effectively.',
-        fullDesc: 'FamBudget revolutionizes family finance management by prioritizing privacy and ease of use. Unlike cloud-based alternatives, FamBudget stores all your financial data locally on your device, ensuring complete control. With multi-currency support, detailed analytics charts, and a seamless offline-first experience, it helps you track every penny without compromising security.',
-        features: ['Complete Privacy (Local Storage)', 'Multi-Currency Support', 'Interactive Analytics Dashboard', 'Offline First Architecture', 'Cross-Platform (Windows/Mac/Linux)', 'Export to CSV/PDF'],
-        year: '2025',
-        image: '/images/fambudget_logo.png',
-        screenshots: [
-            '/images/fambudget_dashboard.jpg',
-            '/images/fambudget_accounts.jpg',
-            '/images/fambudget_income.jpg',
-            '/images/fambudget_goals.jpg',
-            '/images/fambudget_reports.jpg'
+        title: 'GenXBill',
+        desc: 'The Ultimate Open-Source Billing & Inventory Management Suite for Windows.',
+        fullDesc: 'GenXBill is a modern, fast, and secure business operations solution designed specifically for Windows. It provides a comprehensive suite for invoicing, inventory tracking, HR management, and financial reporting, all powered by Flutter and Hive for a seamless offline-first experience.',
+        features: [
+            'Smart Invoicing & PDF Generation',
+            'Real-time Inventory Tracking',
+            'Advanced HR & Attendance Suite',
+            'Business Intelligence Reports',
+            'Customer Relationship Management',
+            'Offline-First Local Storage'
         ],
-        tags: ['Finance', 'Privacy', 'Electron']
+        year: '2025',
+        image: '/images/genxbill_logo.png',
+        screenshots: [
+            '/images/genxbill_start.png',
+            '/images/genxbill_home.png',
+            '/images/genxbill_invoice.png',
+            '/images/genxbill_inventory.png',
+            '/images/genxbill_hr.png',
+            '/images/genxbill_reports.png'
+        ],
+        tags: ['Billing', 'Inventory', 'Flutter', 'Open Source']
+    },
+    {
+        title: 'FamBudget',
+        desc: 'A powerful, privacy-focused desktop application designed for family finance management.',
+        fullDesc: 'FamBudget v5.0.0 is a secure, offline-first finance manager built with Flutter for Windows. It features advanced income/expense tracking, visual budgeting with donut charts, and dedicated financial goal management with priority levels and progress tracking, ensuring 100% of your data stays on your device.',
+        features: [
+            'Income & Expense Tracking (CSV Export)',
+            'Visual Budgeting & Donut Charts',
+            'Financial Goal Management (Priority Targets)',
+            'Multi-Currency & Multilingual Support (10+ Currencies)',
+            'Privacy Centric (100% Local Storage)',
+            'Modern Material UI with Dark Mode'
+        ],
+        year: '2025',
+        image: '/images/fambudget_logo_new.png',
+        screenshots: [
+            '/images/fambudget_dashboard_new.png',
+            '/images/fambudget_transactions_new.png',
+            '/images/fambudget_accounts_new.png',
+            '/images/fambudget_goals_new.png',
+            '/images/fambudget_reports_new.png',
+            '/images/fambudget_settings_new.png'
+        ],
+        tags: ['Finance', 'Privacy', 'Flutter', 'Desktop']
     },
     {
         title: 'GenXLink',
@@ -37,10 +69,10 @@ const products = [
         desc: 'Next-generation local AI processing unit designed for edge devices.',
         fullDesc: 'NeuralCore brings the power of Large Language Models directly to edge devices. By optimizing inference for low-power hardware, it enables real-time AI processing without the need for a cloud connection. Perfect for smart home hubs, robotics, and privacy-sensitive applications.',
         features: ['On-Device AI Inference', 'Ultra-Low Latency', 'Privacy Centric (No Cloud)', 'Energy Efficient', 'Customizable Models'],
-        year: '2026',
+        year: '2025',
         image: null,
         screenshots: [],
-        tags: ['AI', 'Hardware', 'Future']
+        tags: ['AI', 'Hardware', 'Edge Computing']
     }
 ];
 
@@ -49,7 +81,7 @@ const Products = () => {
     const isDark = theme.palette.mode === 'dark';
     const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null);
     const [activeImageIndex, setActiveImageIndex] = useState(0);
-    const [activeIndex, setActiveIndex] = useState(1); // Start with middle item
+    const [activeIndex, setActiveIndex] = useState(0); // Start with first item (GenXBill)
 
     const handleOpen = (product: typeof products[0]) => {
         setSelectedProduct(product);
