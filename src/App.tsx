@@ -27,7 +27,7 @@ function App() {
             transition: 'background-color 0.3s ease, color 0.3s ease'
           }}>
             <Navbar />
-            <main>
+            <Box component="main" sx={{ position: 'relative', width: '100%' }}>
               <Hero />
               <TechStack />
               <Products />
@@ -35,7 +35,7 @@ function App() {
               <Insights />
               <About />
               <Contact />
-            </main>
+            </Box>
             <Footer />
 
           </Box>
