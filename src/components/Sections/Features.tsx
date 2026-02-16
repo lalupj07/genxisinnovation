@@ -1,4 +1,5 @@
 import { Box, Container, Typography, Grid, Card, CardContent } from '@mui/material';
+import AnimatedIcon from '../UI/AnimatedIcon';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import SecurityIcon from '@mui/icons-material/Security';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
@@ -35,6 +36,7 @@ const features = [
 ];
 
 const Features = () => {
+
     return (
         <Box id="features" sx={{ py: 12, background: 'rgba(255, 255, 255, 0.02)' }}>
             <Container maxWidth="lg">
@@ -71,7 +73,7 @@ const Features = () => {
                                 >
                                     <CardContent sx={{ textAlign: 'center', p: 4 }}>
                                         <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
-                                            {feature.icon}
+                                            <AnimatedIcon>{feature.icon}</AnimatedIcon>
                                         </Box>
                                         <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
                                             {feature.title}

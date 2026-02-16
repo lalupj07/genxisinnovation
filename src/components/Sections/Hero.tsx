@@ -1,4 +1,5 @@
-import { Box, Typography, Container, Button, useTheme } from '@mui/material';
+import { Box, Typography, Container, Button, useTheme, Grid } from '@mui/material';
+import Hero3D from '../UI/Hero3D';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
@@ -47,61 +48,69 @@ const Hero = () => {
                 transition: 'all 0.5s ease'
             }} />
 
-            <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: 'easeOut' }}
-                >
-                    <Typography
-                        variant="h1"
-                        sx={{
-                            fontSize: { xs: '4rem', md: '10rem' },
-                            lineHeight: 0.9,
-                            letterSpacing: '-0.05em',
-                            mb: 4,
-                            background: isDark
-                                ? `linear-gradient(90deg, #FFFFFF 0%, ${theme.palette.primary.main} 50%, ${theme.palette.secondary.main} 100%)`
-                                : `linear-gradient(90deg, ${theme.palette.text.primary} 0%, ${theme.palette.primary.main} 50%, ${theme.palette.secondary.main} 100%)`,
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            filter: isDark
-                                ? `drop-shadow(0 0 20px ${theme.palette.primary.main}4d)`
-                                : 'none',
-                            transition: 'all 0.3s ease'
-                        }}
-                    >
-                        Pure.<br />
-                        Digital.<br />
-                        Future.
-                    </Typography>
-                </motion.div>
+            <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', alignItems: 'center' }}>
+                <Grid container spacing={4} alignItems="center" sx={{ width: '100%' }}>
+                    <Grid size={{ xs: 12, md: 7 }}>
+                        <motion.div
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, ease: 'easeOut' }}
+                        >
+                            <Typography
+                                variant="h1"
+                                sx={{
+                                    fontSize: { xs: '4rem', md: '8rem', lg: '10rem' }, // Adjusted responsive font size
+                                    lineHeight: 0.9,
+                                    letterSpacing: '-0.05em',
+                                    mb: 4,
+                                    background: isDark
+                                        ? `linear-gradient(90deg, #FFFFFF 0%, ${theme.palette.primary.main} 50%, ${theme.palette.secondary.main} 100%)`
+                                        : `linear-gradient(90deg, ${theme.palette.text.primary} 0%, ${theme.palette.primary.main} 50%, ${theme.palette.secondary.main} 100%)`,
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    filter: isDark
+                                        ? `drop-shadow(0 0 20px ${theme.palette.primary.main}4d)`
+                                        : 'none',
+                                    transition: 'all 0.3s ease'
+                                }}
+                            >
+                                Pure.<br />
+                                Digital.<br />
+                                Future.
+                            </Typography>
+                        </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                >
-                    <Typography
-                        variant="body1"
-                        sx={{
-                            maxWidth: '500px',
-                            mb: 6,
-                            color: 'text.secondary',
-                            fontSize: '1.2rem'
-                        }}
-                    >
-                        We build ecosystems that define the next generation of connectivity. Simple, powerful, and seamless.
-                    </Typography>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 1 }}
+                        >
+                            <Typography
+                                variant="body1"
+                                sx={{
+                                    maxWidth: '500px',
+                                    mb: 6,
+                                    color: 'text.secondary',
+                                    fontSize: '1.2rem'
+                                }}
+                            >
+                                We build ecosystems that define the next generation of connectivity. Simple, powerful, and seamless.
+                            </Typography>
 
-                    <Button
-                        variant="contained"
-                        size="large"
-                        href="#products"
-                    >
-                        Explore Ecosystem
-                    </Button>
-                </motion.div>
+                            <Button
+                                variant="contained"
+                                size="large"
+                                href="#products"
+                            >
+                                Explore Ecosystem
+                            </Button>
+                        </motion.div>
+                    </Grid>
+
+                    <Grid size={{ xs: 12, md: 5 }} sx={{ display: { xs: 'none', md: 'block' }, height: '600px' }}>
+                        <Hero3D />
+                    </Grid>
+                </Grid>
             </Container>
         </Box>
     );

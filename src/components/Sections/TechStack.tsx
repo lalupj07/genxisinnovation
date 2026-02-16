@@ -13,6 +13,16 @@ const techs = [
     { name: 'WebAssembly', color: '#654FF0', desc: 'High Performance Native' }
 ];
 
+interface IParticle {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    size: number;
+    update: () => void;
+    draw: () => void;
+}
+
 const TechStack = () => {
     const theme = useTheme();
     const isDark = theme.palette.mode === 'dark';
@@ -27,62 +37,57 @@ const TechStack = () => {
         let width = canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth;
         let height = canvas.height = 600;
 
-        const particles: Particle[] = [];
         const particleCount = 60;
         const connectionDistance = 150;
         const mouseDistance = 200;
 
-        let mouse = { x: 0, y: 0 };
+        const mouse = { x: 0, y: 0 };
 
-        class Particle {
-            x: number;
-            y: number;
-            vx: number;
-            vy: number;
-            size: number;
+        const createParticle = (): IParticle => {
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const vx = (Math.random() - 0.5) * 1;
+            const vy = (Math.random() - 0.5) * 1;
+            const size = Math.random() * 2 + 1;
 
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 1;
-                this.vy = (Math.random() - 0.5) * 1;
-                this.size = Math.random() * 2 + 1;
-            }
+            return {
+                x, y, vx, vy, size,
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
 
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
 
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
+                    // Mouse interaction
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
 
-                // Mouse interaction
-                const dx = mouse.x - this.x;
-                const dy = mouse.y - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < mouseDistance) {
-                    const forceDirectionX = dx / distance;
-                    const forceDirectionY = dy / distance;
-                    const force = (mouseDistance - distance) / mouseDistance;
-                    const directionX = forceDirectionX * force * 0.5;
-                    const directionY = forceDirectionY * force * 0.5;
-                    this.vx += directionX;
-                    this.vy += directionY;
+                    if (distance < mouseDistance) {
+                        const forceDirectionX = dx / distance;
+                        const forceDirectionY = dy / distance;
+                        const force = (mouseDistance - distance) / mouseDistance;
+                        const directionX = forceDirectionX * force * 0.5;
+                        const directionY = forceDirectionY * force * 0.5;
+                        this.vx += directionX;
+                        this.vy += directionY;
+                    }
+                },
+                draw() {
+                    if (!ctx) return;
+                    ctx.fillStyle = isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
                 }
-            }
+            };
+        };
 
-            draw() {
-                if (!ctx) return;
-                ctx.fillStyle = isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
+        const particles: IParticle[] = [];
 
         for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
+            particles.push(createParticle());
         }
 
         const animate = () => {

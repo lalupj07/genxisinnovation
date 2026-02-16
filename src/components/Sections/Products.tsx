@@ -3,6 +3,7 @@ import { Container, Card, Typography, Box, Button, Chip, Dialog, DialogContent, 
 import CloseIcon from '@mui/icons-material/Close';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import DownloadIcon from '@mui/icons-material/Download';
 import { motion } from 'framer-motion';
 
 const products = [
@@ -28,7 +29,8 @@ const products = [
             '/images/genxbill_hr.png',
             '/images/genxbill_reports.png'
         ],
-        tags: ['Billing', 'Inventory', 'Flutter', 'Open Source']
+        tags: ['Billing', 'Inventory', 'Flutter', 'Open Source'],
+        downloadLink: 'https://github.com/lalupj07/GenXBill/releases/download/v1.0.0/GenXBill_Portable_v1.0.0.zip'
     },
     {
         title: 'FamBudget',
@@ -52,7 +54,8 @@ const products = [
             '/images/fambudget_reports_new.png',
             '/images/fambudget_settings_new.png'
         ],
-        tags: ['Finance', 'Privacy', 'Flutter', 'Desktop']
+        tags: ['Finance', 'Privacy', 'Flutter', 'Desktop'],
+        downloadLink: 'https://github.com/lalupj07/FamBudget/releases/download/v5.0.0/FamBudget-Portable-5.0.0.zip'
     },
     {
         title: 'GenXLink',
@@ -62,7 +65,8 @@ const products = [
         year: '2025',
         image: '/images/genxlink_logo.png',
         screenshots: [],
-        tags: ['Remote Desktop', 'Rust', 'Security']
+        tags: ['Remote Desktop', 'Rust', 'Security'],
+        downloadLink: '#'
     },
     {
         title: 'NeuralCore',
@@ -72,7 +76,8 @@ const products = [
         year: '2025',
         image: null,
         screenshots: [],
-        tags: ['AI', 'Hardware', 'Edge Computing']
+        tags: ['AI', 'Hardware', 'Edge Computing'],
+        downloadLink: '#'
     }
 ];
 
@@ -384,6 +389,34 @@ const Products = () => {
                                     </Box>
                                 ))}
                             </Box>
+
+                            {selectedProduct.downloadLink && (
+                                <Box sx={{ mt: 4 }}>
+                                    <Button
+                                        variant="contained"
+                                        size="large"
+                                        startIcon={<DownloadIcon />}
+                                        href={selectedProduct.downloadLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        sx={{
+                                            px: 4,
+                                            py: 1.5,
+                                            borderRadius: 2,
+                                            fontWeight: 700,
+                                            textTransform: 'none',
+                                            fontSize: '1.1rem',
+                                            boxShadow: isDark ? '0 10px 20px rgba(0,229,255,0.2)' : '0 10px 20px rgba(41,121,255,0.2)',
+                                            '&:hover': {
+                                                transform: 'translateY(-2px)',
+                                                boxShadow: isDark ? '0 15px 30px rgba(0,229,255,0.3)' : '0 15px 30px rgba(41,121,255,0.3)'
+                                            }
+                                        }}
+                                    >
+                                        Download Now
+                                    </Button>
+                                </Box>
+                            )}
                         </DialogContent>
                     </Box>
                 )}

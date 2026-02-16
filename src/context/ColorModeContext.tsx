@@ -2,6 +2,7 @@ import { createContext, useState, useMemo, useEffect, type ReactNode } from 'rea
 import { ThemeProvider, createTheme, type PaletteMode, responsiveFontSizes } from '@mui/material';
 import { getDesignTokens } from '../theme/theme';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ColorModeContext = createContext({ toggleColorMode: () => { } });
 
 export const ColorModeProvider = ({ children }: { children: ReactNode }) => {
