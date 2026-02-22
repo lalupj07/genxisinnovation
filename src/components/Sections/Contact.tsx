@@ -19,6 +19,30 @@ const Contact = () => {
     const form = useRef<HTMLFormElement>(null);
     const [loading, setLoading] = useState(false);
 
+    // Inline validation states
+    const [name, setName] = useState('');
+    const [nameError, setNameError] = useState('');
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+
+    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setName(e.target.value);
+        if (e.target.value && e.target.value.length < 3) {
+            setNameError('Name must be at least 3 characters');
+        } else {
+            setNameError('');
+        }
+    };
+
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value);
+        if (e.target.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value)) {
+            setEmailError('Please enter a valid email address');
+        } else {
+            setEmailError('');
+        }
+    };
+
     const sendEmail = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
@@ -104,10 +128,31 @@ const Contact = () => {
                     <form ref={form} onSubmit={sendEmail}>
                         <Grid container spacing={3}>
                             <Grid size={{ xs: 12, sm: 6 }}>
-                                <TextField fullWidth label="Name" name="name" variant="outlined" required />
+                                <TextField
+                                    fullWidth
+                                    label="Name"
+                                    name="user_name"
+                                    variant="outlined"
+                                    required
+                                    value={name}
+                                    onChange={handleNameChange}
+                                    error={!!nameError}
+                                    helperText={nameError}
+                                />
                             </Grid>
                             <Grid size={{ xs: 12, sm: 6 }}>
-                                <TextField fullWidth label="Email" name="email" type="email" variant="outlined" required />
+                                <TextField
+                                    fullWidth
+                                    label="Email"
+                                    name="user_email"
+                                    type="email"
+                                    variant="outlined"
+                                    required
+                                    value={email}
+                                    onChange={handleEmailChange}
+                                    error={!!emailError}
+                                    helperText={emailError}
+                                />
                             </Grid>
                             <Grid size={{ xs: 12 }}>
                                 <TextField

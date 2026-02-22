@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Card, Typography, Box, Button, Chip, Dialog, DialogContent, IconButton, useTheme, Zoom } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -30,7 +30,8 @@ const products = [
             '/images/genxbill_reports.png'
         ],
         tags: ['Billing', 'Inventory', 'Flutter', 'Open Source'],
-        downloadLink: 'https://github.com/lalupj07/GenXBill/releases/download/v1.0.0/GenXBill_Portable_v1.0.0.zip'
+        downloadLink: 'https://github.com/lalupj07/GenXBill/releases/download/v1.0.0/GenXBill_Portable_v1.0.0.zip',
+        upcoming: false
     },
     {
         title: 'FamBudget',
@@ -55,7 +56,8 @@ const products = [
             '/images/fambudget_settings_new.png'
         ],
         tags: ['Finance', 'Privacy', 'Flutter', 'Desktop'],
-        downloadLink: 'https://github.com/lalupj07/FamBudget/releases/download/v5.0.0/FamBudget-Portable-5.0.0.zip'
+        downloadLink: 'https://github.com/lalupj07/FamBudget/releases/download/v5.0.0/FamBudget-Portable-5.0.0.zip',
+        upcoming: false
     },
     {
         title: 'GenXLink',
@@ -64,9 +66,14 @@ const products = [
         features: ['Screen Sharing (60fps)', 'Secure P2P Encryption (End-to-End)', 'Advanced NAT Traversal', 'Multi-Platform (Win/Mac/Linux)', 'File Transfer', 'Unattended Access'],
         year: '2025',
         image: '/images/genxlink_logo.png',
-        screenshots: [],
+        screenshots: [
+            '/images/genxlink_startup.jpg',
+            '/images/genxlink_home.jpg',
+            '/images/genxlink_home_1.jpg'
+        ],
         tags: ['Remote Desktop', 'Rust', 'Security'],
-        downloadLink: '#'
+        downloadLink: '#',
+        upcoming: true
     },
     {
         title: 'NeuralCore',
@@ -77,7 +84,8 @@ const products = [
         image: null,
         screenshots: [],
         tags: ['AI', 'Hardware', 'Edge Computing'],
-        downloadLink: '#'
+        downloadLink: '#',
+        upcoming: false
     }
 ];
 
@@ -114,6 +122,18 @@ const Products = () => {
     const prevProduct = () => {
         setActiveIndex((prev) => (prev - 1 + products.length) % products.length);
     };
+
+    useEffect(() => {
+        let interval: ReturnType<typeof setInterval>;
+        if (selectedProduct && selectedProduct.screenshots && selectedProduct.screenshots.length > 1) {
+            interval = setInterval(() => {
+                setActiveImageIndex((prev) => (prev + 1) % selectedProduct.screenshots.length);
+            }, 3000); // Auto-slide every 3 seconds
+        }
+        return () => {
+            if (interval) clearInterval(interval);
+        };
+    }, [selectedProduct]);
 
     return (
         <Box id="products" sx={{ py: 20, bgcolor: 'background.default', position: 'relative', overflow: 'hidden' }}>
@@ -256,7 +276,14 @@ const Products = () => {
                                                 ) : (
                                                     <Box sx={{ width: 64, height: 64, borderRadius: '16px', bgcolor: 'action.hover' }} />
                                                 )}
-                                                <Chip label={product.year} size="small" variant="outlined" color="primary" />
+                                                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 1 }}>
+                                                    <Box sx={{ display: 'flex', gap: 1 }}>
+                                                        {product.upcoming && (
+                                                            <Chip label="Upcoming" size="small" sx={{ bgcolor: isDark ? 'rgba(255, 107, 107, 0.2)' : 'rgba(255, 107, 107, 0.1)', color: 'secondary.main', fontWeight: 600, border: `1px solid ${theme.palette.secondary.main}40` }} />
+                                                        )}
+                                                        <Chip label={product.year} size="small" variant="outlined" color="primary" />
+                                                    </Box>
+                                                </Box>
                                             </Box>
                                             <Typography variant="h4" sx={{ mb: 2, fontWeight: 700 }}>{product.title}</Typography>
                                             <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
@@ -375,6 +402,9 @@ const Products = () => {
                         <DialogContent sx={{ flex: 1, p: { xs: 4, md: 6 } }}>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
                                 <Typography variant="h3" sx={{ fontSize: '2.5rem' }}>{selectedProduct.title}</Typography>
+                                {selectedProduct.upcoming && (
+                                    <Chip label="Upcoming" size="small" sx={{ bgcolor: isDark ? 'rgba(255, 107, 107, 0.2)' : 'rgba(255, 107, 107, 0.1)', color: 'secondary.main', fontWeight: 600, border: `1px solid ${theme.palette.secondary.main}40` }} />
+                                )}
                                 <Chip label={selectedProduct.year} variant="outlined" color="primary" size="small" />
                             </Box>
                             <Typography variant="body1" sx={{ color: 'text.secondary', fontSize: '1.1rem', mb: 4, lineHeight: 1.7 }}>

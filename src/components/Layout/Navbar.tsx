@@ -1,13 +1,61 @@
 import { useState, useEffect, useContext } from 'react';
-import { AppBar, Toolbar, Typography, Button, Stack, Container, Box, IconButton, useTheme } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Stack, Container, Box, IconButton, useTheme, Drawer, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
+import { Link, useLocation } from 'react-router-dom';
 import { ColorModeContext } from '../../context/ColorModeContext';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
     const theme = useTheme();
     const colorMode = useContext(ColorModeContext);
+    const location = useLocation();
+
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
+
+    const navItems = [
+        { label: 'Home', path: '/' },
+        { label: 'Products', path: '/products' },
+        { label: 'Services', path: '/services' },
+        { label: 'Insights', path: '/insights' },
+        { label: 'About', path: '/about' },
+        { label: 'Contact', path: '/contact' }
+    ];
+
+    const drawer = (
+        <Box sx={{ p: 2, height: '100%', bgcolor: 'background.default' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
+                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Menu</Typography>
+                <IconButton onClick={handleDrawerToggle}>
+                    <CloseIcon />
+                </IconButton>
+            </Box>
+            <List>
+                {navItems.map((item) => (
+                    <ListItem key={item.label} disablePadding>
+                        <ListItemButton
+                            component={Link}
+                            to={item.path}
+                            onClick={handleDrawerToggle}
+                            sx={{
+                                borderRadius: 2, mb: 1,
+                                bgcolor: location.pathname === item.path ? (theme.palette.mode === 'dark' ? 'rgba(0, 240, 255, 0.1)' : 'rgba(76, 110, 245, 0.1)') : 'transparent',
+                                color: location.pathname === item.path ? 'primary.main' : 'inherit'
+                            }}
+                        >
+                            <ListItemText primary={item.label} primaryTypographyProps={{ fontSize: '1.1rem', fontWeight: 500 }} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+        </Box>
+    );
 
     useEffect(() => {
         const handleScroll = () => {
@@ -48,7 +96,7 @@ const Navbar = () => {
         >
             <Container maxWidth="xl">
                 <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, cursor: 'pointer' }}>
+                    <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
                         <Box
                             component="img"
                             src="/images/genxis_logo.png"
@@ -70,28 +118,27 @@ const Navbar = () => {
                         >
                             GenXis
                         </Typography>
-                    </Box>
+                    </Link>
+
+                    <Stack direction="row" spacing={2} alignItems="center" sx={{ display: { xs: 'flex', md: 'none' } }}>
+                        <IconButton color="inherit" onClick={handleDrawerToggle}>
+                            <MenuIcon />
+                        </IconButton>
+                    </Stack>
 
                     <Stack direction="row" spacing={4} alignItems="center" sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <Stack direction="row" spacing={6}>
-                            {[
-                                { label: 'Home', href: '#home' },
-                                { label: 'Products', href: '#products' },
-                                { label: 'Services', href: '#services' },
-                                { label: 'Insights', href: '#insights' },
-                                { label: 'About', href: '#about' },
-                                { label: 'Contact', href: '#contact' }
-                            ].map((nav) => (
+                            {navItems.map((nav) => (
                                 <Button
                                     key={nav.label}
-                                    color="inherit"
-                                    href={nav.href}
+                                    component={Link}
+                                    to={nav.path}
                                     sx={{
                                         fontSize: '0.9rem',
                                         fontWeight: 500,
-                                        opacity: 0.8,
+                                        opacity: location.pathname === nav.path ? 1 : 0.8,
                                         position: 'relative',
-                                        color: 'text.primary',
+                                        color: location.pathname === nav.path ? 'primary.main' : 'text.primary',
                                         '&:hover': {
                                             opacity: 1,
                                             background: 'transparent',
@@ -106,6 +153,10 @@ const Navbar = () => {
                                 </Button>
                             ))}
                         </Stack>
+
+                        <IconButton color="inherit" sx={{ '&:hover': { color: 'primary.main' } }}>
+                            <SearchIcon />
+                        </IconButton>
 
                         <IconButton
                             onClick={colorMode.toggleColorMode}
@@ -124,6 +175,21 @@ const Navbar = () => {
                     </Stack>
                 </Toolbar>
             </Container>
+
+            <Drawer
+                anchor="right"
+                open={mobileOpen}
+                onClose={handleDrawerToggle}
+                ModalProps={{
+                    keepMounted: true, // Better open performance on mobile.
+                }}
+                sx={{
+                    display: { xs: 'block', md: 'none' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 280 },
+                }}
+            >
+                {drawer}
+            </Drawer>
         </AppBar>
     );
 };

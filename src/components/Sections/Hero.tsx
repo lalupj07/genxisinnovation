@@ -1,4 +1,5 @@
 import { Box, Typography, Container, Button, useTheme, Grid } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import Hero3D from '../UI/Hero3D';
 import { motion } from 'framer-motion';
 
@@ -97,13 +98,26 @@ const Hero = () => {
                                 We build ecosystems that define the next generation of connectivity. Simple, powerful, and seamless.
                             </Typography>
 
-                            <Button
-                                variant="contained"
-                                size="large"
-                                href="#products"
-                            >
-                                Explore Ecosystem
-                            </Button>
+                            <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
+                                <Button
+                                    variant="contained"
+                                    size="large"
+                                    component={RouterLink}
+                                    to="/products"
+                                    sx={{ py: 1.5, px: 4, fontSize: '1.1rem' }}
+                                >
+                                    Get Started
+                                </Button>
+                                <Button
+                                    variant="outlined"
+                                    size="large"
+                                    component={RouterLink}
+                                    to="/contact"
+                                    sx={{ py: 1.5, px: 4, fontSize: '1.1rem' }}
+                                >
+                                    Contact Us
+                                </Button>
+                            </Box>
                         </motion.div>
                     </Grid>
 
