@@ -73,7 +73,7 @@ const Insights = () => {
                     <Typography variant="overline" sx={{ color: 'secondary.main', fontWeight: 600, letterSpacing: '0.2em' }}>
                         Engineering Logs
                     </Typography>
-                    <Typography variant="h2" sx={{
+                    <Typography variant="h2" component="h1" sx={{
                         mt: 1,
                         fontWeight: 800,
                         color: 'text.primary',

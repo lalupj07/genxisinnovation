@@ -16,11 +16,21 @@ import Contact from './components/Sections/Contact';
 import SmoothScroll from './components/UI/SmoothScroll';
 import AnimatedPage from './components/UI/AnimatedPage';
 
+const PAGE_TITLES: Record<string, string> = {
+  '/': 'GenXis Innovations | Secure & High-Performance Software Lab',
+  '/products': 'Our Products | GenXis Innovations',
+  '/services': 'Services & Solutions | GenXis Innovations',
+  '/insights': 'Insights & Blog | GenXis Innovations',
+  '/about': 'About Us | GenXis Innovations',
+  '/contact': 'Contact Us | GenXis Innovations',
+};
+
 const AnimatedRoutes = () => {
   const location = useLocation();
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.title = PAGE_TITLES[location.pathname] ?? 'GenXis Innovations';
   }, [location.pathname]);
 
   return (
@@ -36,6 +46,7 @@ const AnimatedRoutes = () => {
     </AnimatePresence>
   );
 };
+
 
 function App() {
   return (

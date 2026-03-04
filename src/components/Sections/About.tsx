@@ -130,7 +130,7 @@ const About = () => {
                             <Typography variant="overline" sx={{ color: 'secondary.main', fontWeight: 600, letterSpacing: '0.2em' }}>
                                 Who We Are
                             </Typography>
-                            <Typography variant="h2" sx={{
+                            <Typography variant="h2" component="h1" sx={{
                                 mt: 1,
                                 mb: 3,
                                 fontWeight: 800,

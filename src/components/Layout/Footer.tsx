@@ -1,4 +1,5 @@
 import { Box, Container, Typography, Stack, Link, IconButton, TextField, Button, useTheme } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 
@@ -74,6 +75,31 @@ const Footer = () => {
                             </Stack>
                         </Box>
 
+                        {/* Navigation Links Column */}
+                        <Stack spacing={2} sx={{ minWidth: '160px' }}>
+                            <Typography variant="subtitle2" sx={{ color: 'primary.main', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700 }}>
+                                Navigation
+                            </Typography>
+                            {[
+                                { label: 'Home', to: '/' },
+                                { label: 'Products', to: '/products' },
+                                { label: 'Services', to: '/services' },
+                                { label: 'Insights', to: '/insights' },
+                                { label: 'About Us', to: '/about' },
+                                { label: 'Contact', to: '/contact' },
+                            ].map((link) => (
+                                <Link
+                                    key={link.to}
+                                    component={RouterLink}
+                                    to={link.to}
+                                    underline="hover"
+                                    sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' }, fontSize: '0.9rem' }}
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </Stack>
+
                         <Box sx={{ minWidth: '300px' }}>
                             <Typography variant="subtitle2" sx={{ color: 'primary.main', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, mb: 2 }}>
                                 Subscribe to Newsletter
@@ -148,3 +174,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

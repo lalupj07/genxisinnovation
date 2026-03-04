@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <rect width="180" height="180" rx="40" fill="#0b0f19"/>
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#bf00ff"/>
+    </linearGradient>
+  </defs>
+  <!-- G lettermark -->
+  <text x="90" y="130" font-family="Arial, sans-serif" font-size="110" font-weight="900"
+        text-anchor="middle" fill="url(#g1)">G</text>
+  <!-- Glow circle accent -->
+  <circle cx="90" cy="90" r="75" fill="none" stroke="url(#g1)" stroke-width="2" opacity="0.3"/>
+</svg>

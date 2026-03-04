@@ -52,13 +52,32 @@ const Hero = () => {
             <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', alignItems: 'center' }}>
                 <Grid container spacing={4} alignItems="center" sx={{ width: '100%' }}>
                     <Grid size={{ xs: 12, md: 7 }}>
+                        {/* SEO: Visually hidden h1 for search engines */}
+                        <Typography
+                            component="h1"
+                            sx={{
+                                position: 'absolute',
+                                width: '1px',
+                                height: '1px',
+                                padding: 0,
+                                margin: '-1px',
+                                overflow: 'hidden',
+                                clip: 'rect(0,0,0,0)',
+                                whiteSpace: 'nowrap',
+                                border: 0,
+                            }}
+                        >
+                            GenXis Innovations – Secure, Privacy-First Software Lab in India
+                        </Typography>
+
                         <motion.div
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, ease: 'easeOut' }}
                         >
                             <Typography
-                                variant="h1"
+                                variant="h2"
+                                aria-hidden="true"
                                 sx={{
                                     fontSize: { xs: '4rem', md: '8rem', lg: '10rem' }, // Adjusted responsive font size
                                     lineHeight: 0.9,
@@ -117,6 +136,33 @@ const Hero = () => {
                                 >
                                     Contact Us
                                 </Button>
+                            </Box>
+
+                            {/* Internal navigation links – improves SEO internal link density */}
+                            <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap', mt: 4 }}>
+                                {[
+                                    { label: 'Our Products', to: '/products' },
+                                    { label: 'Services', to: '/services' },
+                                    { label: 'About Us', to: '/about' },
+                                    { label: 'Insights', to: '/insights' },
+                                ].map((link) => (
+                                    <Button
+                                        key={link.to}
+                                        component={RouterLink}
+                                        to={link.to}
+                                        size="small"
+                                        sx={{
+                                            color: 'text.secondary',
+                                            fontSize: '0.85rem',
+                                            textTransform: 'none',
+                                            p: 0,
+                                            minWidth: 0,
+                                            '&:hover': { color: 'primary.main', background: 'none' },
+                                        }}
+                                    >
+                                        {link.label} →
+                                    </Button>
+                                ))}
                             </Box>
                         </motion.div>
                     </Grid>
