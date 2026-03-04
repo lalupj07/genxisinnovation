@@ -13,6 +13,7 @@ import Insights from './components/Sections/Insights';
 import About from './components/Sections/About';
 import Testimonials from './components/Sections/Testimonials';
 import Contact from './components/Sections/Contact';
+import PrivacyPolicy from './components/Pages/PrivacyPolicy';
 import SmoothScroll from './components/UI/SmoothScroll';
 import AnimatedPage from './components/UI/AnimatedPage';
 
@@ -23,6 +24,7 @@ const PAGE_TITLES: Record<string, string> = {
   '/insights': 'Insights & Blog | GenXis Innovations',
   '/about': 'About Us | GenXis Innovations',
   '/contact': 'Contact Us | GenXis Innovations',
+  '/privacy': 'Privacy Policy | GenXis Innovations',
 };
 
 const AnimatedRoutes = () => {
@@ -42,6 +44,7 @@ const AnimatedRoutes = () => {
         <Route path="/insights" element={<AnimatedPage><Insights /></AnimatedPage>} />
         <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
         <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
+        <Route path="/privacy" element={<AnimatedPage><PrivacyPolicy /></AnimatedPage>} />
       </Routes>
     </AnimatePresence>
   );

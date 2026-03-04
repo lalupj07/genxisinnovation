@@ -100,6 +100,37 @@ const Footer = () => {
                             ))}
                         </Stack>
 
+                        {/* Legal Links Column */}
+                        <Stack spacing={2} sx={{ minWidth: '140px' }}>
+                            <Typography variant="subtitle2" sx={{ color: 'primary.main', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700 }}>
+                                Legal
+                            </Typography>
+                            <Link
+                                component={RouterLink}
+                                to="/privacy"
+                                underline="hover"
+                                sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' }, fontSize: '0.9rem' }}
+                            >
+                                Privacy Policy
+                            </Link>
+                            <Link
+                                component={RouterLink}
+                                to="/privacy"
+                                underline="hover"
+                                sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' }, fontSize: '0.9rem' }}
+                            >
+                                Terms of Use
+                            </Link>
+                            <Link
+                                href="https://github.com/lalupj07"
+                                target="_blank"
+                                underline="hover"
+                                sx={{ color: 'text.secondary', '&:hover': { color: 'secondary.main' }, fontSize: '0.9rem' }}
+                            >
+                                Open Source
+                            </Link>
+                        </Stack>
+
                         <Box sx={{ minWidth: '300px' }}>
                             <Typography variant="subtitle2" sx={{ color: 'primary.main', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, mb: 2 }}>
                                 Subscribe to Newsletter
@@ -148,6 +179,35 @@ const Footer = () => {
                             <Typography variant="caption" sx={{ color: '#555' }}>
                                 Built with ❤️ by GenXis Innovations
                             </Typography>
+                        </Stack>
+
+                        {/* Legal Links */}
+                        <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap" justifyContent="center">
+                            <Link
+                                component={RouterLink}
+                                to="/privacy"
+                                underline="hover"
+                                sx={{ color: 'text.secondary', fontSize: '0.82rem', '&:hover': { color: 'primary.main' } }}
+                            >
+                                Privacy Policy
+                            </Link>
+                            <Typography variant="caption" sx={{ color: theme.palette.divider }}>•</Typography>
+                            <Link
+                                component={RouterLink}
+                                to="/privacy"
+                                underline="hover"
+                                sx={{ color: 'text.secondary', fontSize: '0.82rem', '&:hover': { color: 'primary.main' } }}
+                            >
+                                Terms of Use
+                            </Link>
+                            <Typography variant="caption" sx={{ color: theme.palette.divider }}>•</Typography>
+                            <Link
+                                href="mailto:genxisinnovation@outlook.com"
+                                underline="hover"
+                                sx={{ color: 'text.secondary', fontSize: '0.82rem', '&:hover': { color: 'primary.main' } }}
+                            >
+                                Contact
+                            </Link>
                         </Stack>
 
                         <Box sx={{
