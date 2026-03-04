@@ -5,6 +5,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- GitHub Pages SPA redirect receiver.
+       Reads the path encoded by 404.html and restores it before React Router boots. -->
+  <script>
+    (function () {
+      var redirect = window.location.search.slice(1);
+      if (redirect) {
+        var decoded = redirect.split('&').reduce(function (acc, part) {
+          var eq = part.indexOf('=');
+          var key = eq > -1 ? part.slice(0, eq) : part;
+          var val = eq > -1 ? part.slice(eq + 1) : '';
+          if (key === 'p') acc.path = decodeURIComponent(val.replace(/~and~/g, '&'));
+          if (key === 'hash') acc.hash = decodeURIComponent(val);
+          return acc;
+        }, { path: '', hash: '' });
+        if (decoded.path) {
+          window.history.replaceState(
+            null, null,
+            window.location.pathname.slice(0, -1) + decoded.path +
+            (decoded.hash ? '#' + decoded.hash : '')
+          );
+        }
+      }
+    })();
+  </script>
+
   <!-- Favicon & App Icons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
