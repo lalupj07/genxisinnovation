@@ -65,6 +65,7 @@ const TechStack = () => {
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
                     if (distance < mouseDistance) {
+                        if (distance === 0) return; // Avoid division by zero
                         const forceDirectionX = dx / distance;
                         const forceDirectionY = dy / distance;
                         const force = (mouseDistance - distance) / mouseDistance;
