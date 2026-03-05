@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Container, Typography, Divider, useTheme, Chip, Stack } from '@mui/material';
 import { motion } from 'framer-motion';
 import SecurityIcon from '@mui/icons-material/Security';
