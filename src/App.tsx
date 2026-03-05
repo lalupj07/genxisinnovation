@@ -16,6 +16,7 @@ import Contact from './components/Sections/Contact';
 import PrivacyPolicy from './components/Pages/PrivacyPolicy';
 import SmoothScroll from './components/UI/SmoothScroll';
 import AnimatedPage from './components/UI/AnimatedPage';
+import ChatBot from './components/UI/ChatBot';
 
 const PAGE_TITLES: Record<string, string> = {
   '/': 'GenXis Innovations | Secure & High-Performance Software Lab',
@@ -70,6 +71,8 @@ function App() {
               <AnimatedRoutes />
             </Box>
             <Footer />
+            <ChatBot />
+
 
           </Box>
         </Router>
