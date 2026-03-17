@@ -11,6 +11,7 @@ import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import GroupIcon from '@mui/icons-material/Group';
 import AssessmentIcon from '@mui/icons-material/Assessment';
+import Hero3D from '../UI/Hero3D';
 
 const trustBadges = [
   { icon: <LockIcon sx={{ fontSize: 14 }} />, label: 'Open Source' },
@@ -260,9 +261,23 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, x: 40, scale: 0.96 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 0.9, ease: 'easeOut' as const, delay: 0.3 }}
-              style={{ width: '100%', maxWidth: 480 }}
+              transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
+              style={{ width: '100%', maxWidth: 480, position: 'relative' }}
             >
+              {/* 3D Element in background of mockup */}
+              <Box sx={{
+                position: 'absolute',
+                top: -120,
+                right: -100,
+                width: 400,
+                height: 400,
+                zIndex: -1,
+                opacity: 0.6,
+                pointerEvents: 'none',
+              }}>
+                <Hero3D />
+              </Box>
+
               {/* Window frame outer glow */}
               <Box sx={{
                 borderRadius: '16px',
