@@ -1,6 +1,6 @@
 import { Box, Container, Typography, Button, Chip } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import DesktopWindowsIcon from '@mui/icons-material/DesktopWindows';
@@ -62,12 +62,12 @@ const products = [
   },
 ];
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.12, ease: 'easeOut' as const },
+    transition: { duration: 0.6, delay: i * 0.12, ease: 'easeOut' },
   }),
 };
 

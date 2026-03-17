@@ -1,6 +1,6 @@
 import { Box, Typography, Container, Button } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import DownloadIcon from '@mui/icons-material/Download';
 import ExploreIcon from '@mui/icons-material/Explore';
 import LockIcon from '@mui/icons-material/Lock';
@@ -26,14 +26,14 @@ const genxbillRows = [
   { icon: <AssessmentIcon sx={{ fontSize: 15, color: '#f59e0b' }} />, label: 'Monthly Profit Report', value: '₹1,24,800', badge: 'Q1 2025', badgeColor: '#f59e0b' },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' as const } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
 const Hero = () => {
