@@ -441,7 +441,7 @@ const ChatBot: React.FC = () => {
                                                                 <motion.div
                                                                     key={delay}
                                                                     animate={{ y: [0, -5, 0] }}
-                                                                    transition={{ repeat: Infinity, duration: 0.7, delay, ease: 'easeInOut' }}
+                                                                    transition={{ repeat: Infinity, duration: 0.7, delay, ease: 'easeInOut' as const }}
                                                                     style={{ width: 6, height: 6, borderRadius: '50%', background: accent }}
                                                                 />
                                                             ))}
@@ -503,7 +503,7 @@ const ChatBot: React.FC = () => {
                     whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.94 }}
                     animate={!open ? { y: [0, -4, 0] } : {}}
-                    transition={!open ? { repeat: Infinity, duration: 2.5, ease: 'easeInOut' } : {}}
+                    transition={!open ? { repeat: Infinity, duration: 2.5, ease: 'easeInOut' as const } : {}}
                 >
                     <Box
                         component="button"
@@ -557,7 +557,7 @@ const ChatBot: React.FC = () => {
                         {!open && (
                             <motion.div
                                 animate={{ scale: [1, 1.6], opacity: [0.6, 0] }}
-                                transition={{ repeat: Infinity, duration: 2, ease: 'easeOut' }}
+                                transition={{ repeat: Infinity, duration: 2, ease: 'easeOut' as const }}
                                 style={{
                                     position: 'absolute', inset: 0, borderRadius: '50%',
                                     border: `2px solid ${isDark ? '#00F0FF' : theme.palette.primary.main}`,

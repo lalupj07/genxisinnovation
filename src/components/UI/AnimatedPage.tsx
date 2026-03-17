@@ -26,7 +26,7 @@ const AnimatedPage = ({ children }: { children: ReactNode }) => {
             animate="in"
             exit="out"
             variants={pageVariants}
-            transition={{ type: 'tween', ease: 'anticipate', duration: 0.5 }}
+            transition={{ type: 'tween', ease: 'anticipate' as const, duration: 0.5 }}
             style={{ width: '100%' }}
         >
             {children}

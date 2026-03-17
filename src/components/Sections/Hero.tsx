@@ -33,7 +33,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' as const } },
 };
 
 const Hero = () => {
@@ -260,7 +260,7 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, x: 40, scale: 0.96 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
+              transition={{ duration: 0.9, ease: 'easeOut' as const, delay: 0.3 }}
               style={{ width: '100%', maxWidth: 480 }}
             >
               {/* Window frame outer glow */}
