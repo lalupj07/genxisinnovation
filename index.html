@@ -5,8 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- GitHub Pages SPA redirect receiver.
-       Reads the path encoded by 404.html and restores it before React Router boots. -->
+  <!-- GitHub Pages SPA redirect receiver -->
   <script>
     (function () {
       var redirect = window.location.search.slice(1);
@@ -30,40 +29,46 @@
     })();
   </script>
 
-  <!-- Favicon & App Icons -->
+  <!-- ── Favicon & App Icons ── -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="theme-color" content="#0b0f19" />
-  <meta name="msapplication-TileColor" content="#0b0f19" />
+  <meta name="theme-color" content="#0a0f1e" />
+  <meta name="msapplication-TileColor" content="#0a0f1e" />
 
-  <!-- Primary SEO -->
-  <title>GenXis Innovations | Secure & High-Performance Software Lab in India</title>
+  <!-- ── Primary SEO ── -->
+  <title>GenXis Innovations | Privacy-First, Local-First Software Lab — Kerala, India</title>
   <meta name="description"
-    content="GenXis Innovations is a privacy-first software lab based in India. We build secure, high-performance digital solutions including GenXBill, FamBudget, GenXLink, and custom engineering services using Rust, Flutter, and modern web technologies." />
+    content="GenXis Innovations builds desktop software that never touches the cloud. Free GST billing (GenXBill), family finance (FamBudget), remote desktop (GenXLink), edge AI (NeuralCore). 100% local storage. Made in Kerala, India." />
   <meta name="keywords"
-    content="GenXis Innovations, software lab India, privacy-first software, local-first architecture, Rust development, Flutter apps, custom engineering, performance optimization, GenXBill, FamBudget, GenXLink" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="GenXis Innovations" />
+    content="GenXis Innovations, local-first software India, privacy-first software, free GST billing software India, GenXBill, FamBudget, GenXLink, NeuralCore, offline software India, Kerala software company, open source billing India" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta name="author" content="Lalu James, GenXis Innovations" />
   <link rel="canonical" href="https://genxisinnovation.in/" />
+  <meta name="geo.region" content="IN-KL" />
+  <meta name="geo.placename" content="Kerala, India" />
 
-  <!-- Open Graph (Facebook/LinkedIn) -->
+  <!-- ── Open Graph (Facebook / LinkedIn) ── -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="GenXis Innovations | Secure & High-Performance Software Lab in India" />
+  <meta property="og:title" content="GenXis Innovations | Software That Respects Your Privacy" />
   <meta property="og:description"
-    content="Building the future of secure, private, and intelligent digital ecosystems. Custom engineering, privacy audits, performance optimization, and privacy-first desktop applications." />
+    content="Local-first tools for Indian SMBs. Free GST billing, family finance, remote desktop, edge AI — all 100% offline. Your data never leaves your device." />
   <meta property="og:url" content="https://genxisinnovation.in/" />
   <meta property="og:site_name" content="GenXis Innovations" />
   <meta property="og:locale" content="en_IN" />
-  <meta property="og:image" content="https://genxisinnovation.in/images/genxis_logo.png" />
+  <meta property="og:image" content="https://genxisinnovation.in/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="GenXis Innovations — Privacy-First Software Lab, Kerala India" />
 
-  <!-- Twitter Card -->
+  <!-- ── Twitter Card ── -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="GenXis Innovations | Secure & High-Performance Software Lab" />
+  <meta name="twitter:title" content="GenXis Innovations | Software That Respects Your Privacy" />
   <meta name="twitter:description"
-    content="Privacy-first software lab building GenXBill, FamBudget, GenXLink and more. Custom engineering with Rust, Flutter & modern web technologies." />
-  <meta name="twitter:image" content="https://genxisinnovation.in/images/genxis_logo.png" />
+    content="Free GST billing, family finance and remote desktop — 100% local. No cloud. No subscription. Made in Kerala, India." />
+  <meta name="twitter:image" content="https://genxisinnovation.in/og-image.png" />
+  <meta name="twitter:image:alt" content="GenXis Innovations — Privacy-First Software Lab" />
 
-  <!-- JSON-LD Structured Data (Organization + Website) -->
+  <!-- ── Schema.org: Organization + WebSite + SearchAction + 4 SoftwareApplications + FAQPage ── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -75,13 +80,16 @@
         "url": "https://genxisinnovation.in/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://genxisinnovation.in/images/genxis_logo.png"
+          "url": "https://genxisinnovation.in/images/genxis_logo.png",
+          "width": "512",
+          "height": "512"
         },
-        "description": "GenXis Innovations is a privacy-first software lab based in Kerala, India, specializing in high-performance, secure desktop applications and custom engineering services.",
+        "description": "Privacy-first, local-first software lab based in Kerala, India. We build desktop applications where your data never leaves your device.",
         "foundingDate": "2023",
         "founder": {
           "@type": "Person",
-          "name": "Lalu James"
+          "name": "Lalu James",
+          "jobTitle": "Founder & Developer"
         },
         "address": {
           "@type": "PostalAddress",
@@ -91,45 +99,151 @@
         "contactPoint": {
           "@type": "ContactPoint",
           "email": "genxisinnovation@outlook.com",
-          "contactType": "customer support"
+          "contactType": "customer support",
+          "areaServed": "IN",
+          "availableLanguage": ["English", "Malayalam"]
         },
-        "sameAs": [
-          "https://github.com/lalupj07"
-        ]
+        "sameAs": ["https://github.com/lalupj07"]
       },
       {
         "@type": "WebSite",
         "@id": "https://genxisinnovation.in/#website",
         "url": "https://genxisinnovation.in/",
         "name": "GenXis Innovations",
-        "publisher": { "@id": "https://genxisinnovation.in/#organization" }
+        "description": "Privacy-first, local-first software lab from Kerala, India",
+        "publisher": { "@id": "https://genxisinnovation.in/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://genxisinnovation.in/insights?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
       },
       {
         "@type": "SoftwareApplication",
+        "@id": "https://genxisinnovation.in/#genxbill",
         "name": "GenXBill",
         "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Windows",
-        "description": "Open-Source Billing & Inventory Management Suite for Windows built with Flutter and Hive for a seamless offline-first experience.",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-        "url": "https://genxisinnovation.in/products"
+        "operatingSystem": "Windows 10, Windows 11",
+        "description": "Free, open-source GST billing and inventory management for Indian SMBs. Unlimited invoices, 100% offline, no cloud.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock"
+        },
+        "downloadUrl": "https://github.com/lalupj07/GenXBill/releases/download/v1.0.0/GenXBill_Portable_v1.0.0.zip",
+        "url": "https://genxisinnovation.in/products",
+        "author": { "@id": "https://genxisinnovation.in/#organization" },
+        "softwareVersion": "1.0.0",
+        "keywords": "free GST billing software India, offline invoice software, billing app Windows"
       },
       {
         "@type": "SoftwareApplication",
+        "@id": "https://genxisinnovation.in/#fambudget",
         "name": "FamBudget",
         "applicationCategory": "FinanceApplication",
-        "operatingSystem": "Windows",
-        "description": "Privacy-focused desktop application for family finance management with 100% local storage. Built with Flutter.",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-        "url": "https://genxisinnovation.in/products"
+        "operatingSystem": "Windows 10, Windows 11",
+        "description": "Privacy-focused desktop family finance manager with visual budgets, goal tracking, and 100% local storage. Built with Flutter.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock"
+        },
+        "url": "https://genxisinnovation.in/products",
+        "author": { "@id": "https://genxisinnovation.in/#organization" },
+        "keywords": "family budget app India, offline budget app, personal finance India"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://genxisinnovation.in/#genxlink",
+        "name": "GenXLink",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Windows, Linux, macOS",
+        "description": "P2P remote desktop built in Rust. End-to-end encrypted, 60fps screen share, advanced NAT traversal. No relay servers.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/PreOrder"
+        },
+        "url": "https://genxisinnovation.in/products",
+        "author": { "@id": "https://genxisinnovation.in/#organization" },
+        "keywords": "encrypted remote desktop, P2P remote desktop India, Rust remote desktop"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://genxisinnovation.in/#neuralcore",
+        "name": "NeuralCore",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Windows, Linux",
+        "description": "Edge AI runtime for running LLMs locally. No cloud, no latency, fully private on-device AI inference.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/PreOrder"
+        },
+        "url": "https://genxisinnovation.in/products",
+        "author": { "@id": "https://genxisinnovation.in/#organization" },
+        "keywords": "local AI India, edge AI, on-device LLM, private AI assistant"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is GenXBill really completely free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The Free tier is 100% free, forever. Unlimited invoices and GST billing. No credit card or subscription needed. Open source on GitHub."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does my billing data go to the cloud?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. GenXBill uses Hive local database. We have zero access to your invoices, customer data, or business information."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which OS is supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "GenXBill runs on Windows 10 and Windows 11. The Free version is a portable .zip file you just extract and run."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I upgrade from Free to Pro?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. All your Free data transfers seamlessly to Pro. Apply your license and everything carries over."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a mobile version of GenXBill?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not currently. GenXBill is a Windows desktop app. A Flutter mobile companion app is planned for 2025-26."
+            }
+          }
+        ]
       }
     ]
   }
   </script>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- ── Fonts: Space Grotesk + Inter ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Static content styles (for SEO crawlers) -->
   <style>
@@ -148,66 +262,48 @@
 </head>
 
 <body>
-  <!-- Static SEO content injected directly into HTML for crawlers that don't execute JavaScript.
-       This content is visually hidden but fully readable by search engines. -->
+  <!-- Static SEO content for crawlers -->
   <div id="seo-static-content" aria-hidden="true">
-    <h1>GenXis Innovations – Secure &amp; High-Performance Software Lab in India</h1>
+    <h1>GenXis Innovations — Privacy-First, Local-First Software Lab, Kerala India</h1>
 
     <p>
-      GenXis Innovations is a privacy-first, high-performance software lab based in Kerala, India.
-      We build secure, local-first digital solutions for individuals and businesses — products and
-      services where your data stays on your device, not the cloud.
+      GenXis Innovations is a privacy-first software lab based in Kerala, India.
+      We build local-first desktop software where your data stays on your device — never in the cloud.
     </p>
 
     <h2>Our Products</h2>
     <p>
-      <strong>GenXBill</strong> – The ultimate open-source billing &amp; inventory management suite for Windows.
-      Smart invoicing, real-time inventory tracking, HR management, and business intelligence reports,
-      all powered by Flutter with offline-first local storage.
+      <strong>GenXBill</strong> — Free, open-source GST billing and inventory management for Windows.
+      Unlimited invoices, smart invoicing, HR management, 100% offline local storage.
     </p>
     <p>
-      <strong>FamBudget</strong> – A powerful, privacy-focused desktop application for family finance management.
-      Features visual budgeting with donut charts, financial goal tracking, multi-currency support,
-      and 100% local storage — your data never leaves your device.
+      <strong>FamBudget</strong> — Privacy-focused family finance manager.
+      Visual budgeting with donut charts, goal tracking, multi-currency support, 100% local storage.
     </p>
     <p>
-      <strong>GenXLink</strong> – Cross-platform, lightweight remote desktop optimized for low latency and privacy.
-      Written in Rust for maximum performance. End-to-End encrypted with advanced NAT traversal.
+      <strong>GenXLink</strong> — Cross-platform P2P remote desktop built in Rust.
+      End-to-end encrypted, 60fps screen share, advanced NAT traversal. No relay servers.
     </p>
     <p>
-      <strong>NeuralCore</strong> – Next-generation local AI processing unit designed for edge devices.
-      Brings Large Language Model inference directly to edge devices without cloud connectivity.
+      <strong>NeuralCore</strong> — Edge AI runtime for running LLMs locally on device.
+      No cloud, no latency, fully private on-device AI inference.
     </p>
 
     <h2>Our Services</h2>
-    <p>
-      <strong>Custom Engineering</strong> – From low-level system drivers to high-scale web platforms.
-      We build software in Rust, C++, and modern web frameworks that is robust, maintainable, and tailored
-      to your specific needs.
-    </p>
-    <p>
-      <strong>Privacy Audits &amp; Architecture</strong> – We analyze existing systems and redesign them
-      with a Local-First approach, ensuring GDPR compliance and user trust through end-to-end encryption
-      and data sovereignty.
-    </p>
-    <p>
-      <strong>Performance Optimization</strong> – We specialize in optimizing Electron and web-based desktop
-      apps to run like native code using WebAssembly, deep profiling, and rendering pipeline optimization.
-    </p>
+    <p><strong>Custom Engineering</strong> — Rust, Flutter, TypeScript, Electron system design and development.</p>
+    <p><strong>Privacy Audits</strong> — Local-first architecture, GDPR compliance review, data sovereignty.</p>
+    <p><strong>Performance Optimization</strong> — Profiling, WebAssembly, memory optimization targeting sub-50ms cold starts.</p>
 
     <h2>About GenXis Innovations</h2>
     <p>
-      Founded by Lalu James, GenXis Innovations is a forward-thinking software lab based in Kerala, India.
-      We are dedicated to building secure, privacy-first, and high-performance digital solutions. Our tech
-      stack includes Rust, Flutter, Dart, React, TypeScript, and Electron. We believe technology should
-      empower users without compromising their data.
+      Founded by Lalu James, GenXis Innovations is a Kerala-based software lab dedicated to building
+      secure, privacy-first, high-performance digital tools. Tech stack: Rust, Flutter, Dart, React, TypeScript, Electron.
     </p>
 
-    <h2>Contact Us</h2>
+    <h2>Contact</h2>
     <p>
-      Email us at <a href="mailto:genxisinnovation@outlook.com">genxisinnovation@outlook.com</a>.
-      Based in Kerala, India. Visit our <a href="https://github.com/lalupj07">GitHub repositories</a>
-      to explore our open-source projects.
+      Email: <a href="mailto:genxisinnovation@outlook.com">genxisinnovation@outlook.com</a>.
+      Based in Kerala, India. <a href="https://github.com/lalupj07">GitHub: lalupj07</a>
     </p>
 
     <nav aria-label="Site navigation">
@@ -217,6 +313,7 @@
       <a href="/insights">Insights</a>
       <a href="/about">About Us</a>
       <a href="/contact">Contact</a>
+      <a href="/pricing">GenXBill Pricing</a>
       <a href="/privacy">Privacy Policy</a>
     </nav>
   </div>
@@ -225,59 +322,28 @@
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 
-  <!-- Fallback for users/bots without JavaScript -->
+  <!-- Fallback for bots without JavaScript -->
   <noscript>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 2rem;
-        color: #111;
-      }
-
-      h1 {
-        color: #0b0f19;
-      }
-
-      h2 {
-        color: #333;
-        margin-top: 2rem;
-      }
-
-      a {
-        color: #00bcd4;
-      }
-
-      nav {
-        margin-top: 2rem;
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
+      body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; color: #111; }
+      h1 { color: #0b0f19; } h2 { color: #333; margin-top: 2rem; } a { color: #6366f1; }
+      nav { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
     </style>
-    <h1>GenXis Innovations – Secure &amp; High-Performance Software Lab</h1>
-    <p>We build privacy-first, high-performance digital solutions. Please enable JavaScript to experience the full site.
-    </p>
-    <h2>Our Products</h2>
+    <h1>GenXis Innovations — Privacy-First Software Lab</h1>
+    <p>We build local-first desktop software. Enable JavaScript for the full experience.</p>
+    <h2>Products</h2>
     <ul>
-      <li><strong>GenXBill</strong> – Open-source billing &amp; inventory management for Windows</li>
-      <li><strong>FamBudget</strong> – Privacy-focused family finance manager (100% local storage)</li>
-      <li><strong>GenXLink</strong> – Low-latency, encrypted remote desktop built in Rust</li>
-      <li><strong>NeuralCore</strong> – Edge AI processing unit for local inference</li>
-    </ul>
-    <h2>Our Services</h2>
-    <ul>
-      <li><strong>Custom Engineering</strong> – Rust, C++, system design &amp; web platforms</li>
-      <li><strong>Privacy Audits</strong> – Local-first architecture, GDPR compliance</li>
-      <li><strong>Performance Optimization</strong> – Electron, WebAssembly, 60fps UI</li>
+      <li><strong>GenXBill</strong> — Free GST billing &amp; inventory for Windows (open source)</li>
+      <li><strong>FamBudget</strong> — Private family finance manager (100% local storage)</li>
+      <li><strong>GenXLink</strong> — Encrypted P2P remote desktop built in Rust</li>
+      <li><strong>NeuralCore</strong> — Local edge AI runtime</li>
     </ul>
     <nav>
       <a href="/">Home</a>
       <a href="/products">Products</a>
       <a href="/services">Services</a>
-      <a href="/insights">Insights</a>
-      <a href="/about">About Us</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
       <a href="/contact">Contact</a>
     </nav>
     <p>Contact: <a href="mailto:genxisinnovation@outlook.com">genxisinnovation@outlook.com</a> | Kerala, India</p>

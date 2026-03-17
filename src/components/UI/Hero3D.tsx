@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { useTheme } from '@mui/material';
 import * as THREE from 'three';
 
-const Geometery = ({ isDark }: { isDark: boolean }) => {
+const Geometry = ({ isDark }: { isDark: boolean }) => {
     const meshRef = useRef<THREE.Mesh>(null);
 
     useFrame((state) => {
@@ -43,7 +43,7 @@ const Hero3D = () => {
             <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
                 <ambientLight intensity={0.5} />
                 <pointLight position={[10, 10, 10]} intensity={1} />
-                <Geometery isDark={isDark} />
+                <Geometry isDark={isDark} />
                 <Environment preset="city" />
                 <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={2} />
             </Canvas>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GenXis — Product UI Mockups</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #060a14;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 48px;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  /* ─── WINDOW FRAME ─── */
+  .window {
+    width: 440px;
+    height: 300px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.07);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+  .titlebar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 16px;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+  }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.red   { background: #ff5f56; }
+  .dot.yellow{ background: #ffbd2e; }
+  .dot.green { background: #27c93f; }
+  .titlebar-text {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+    color: #475569;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+  .titlebar-badge {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+  .window-body { flex: 1; overflow: hidden; display: flex; }
+
+  /* ════════════════════════════
+     PRODUCT 1 — GENXBILL
+  ════════════════════════════ */
+  .genxbill { background: #0f1322; }
+  .genxbill .titlebar { }
+  .genxbill .titlebar-badge { background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
+
+  .gb-sidebar {
+    width: 46px;
+    background: rgba(255,255,255,0.025);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 14px;
+    gap: 10px;
+  }
+  .gb-sidebar-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .gb-sidebar-icon.active { background: rgba(99,102,241,0.2); border: 1px solid rgba(99,102,241,0.35); }
+  .gb-sidebar-icon.inactive { color: #334155; }
+
+  .gb-main { flex: 1; display: flex; flex-direction: column; padding: 14px 16px; gap: 12px; overflow: hidden; }
+  .gb-header-row { display: flex; justify-content: space-between; align-items: center; }
+  .gb-title { font-size: 13px; font-weight: 700; color: #e2e8f0; font-family: 'Segoe UI', sans-serif; }
+  .gb-create-btn {
+    font-size: 10px; font-weight: 700;
+    padding: 5px 12px; border-radius: 20px; border: none; cursor: pointer;
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    color: #fff; letter-spacing: 0.03em;
+  }
+
+  .gb-table { width: 100%; border-collapse: collapse; }
+  .gb-table thead th {
+    font-size: 9px; font-weight: 700; color: #334155;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 0 8px 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    text-align: left;
+  }
+  .gb-table thead th:last-child { text-align: right; }
+  .gb-table tbody tr { transition: background 0.2s; }
+  .gb-table tbody tr:hover { background: rgba(99,102,241,0.05); }
+  .gb-table tbody td {
+    font-size: 10px; color: #94a3b8;
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .gb-table tbody td:last-child { text-align: right; color: #e2e8f0; font-weight: 600; }
+  .gb-badge-paid {
+    font-size: 8px; font-weight: 700; padding: 2px 7px; border-radius: 20px;
+    background: rgba(34,211,238,0.12); color: #22d3ee; border: 1px solid rgba(34,211,238,0.25);
+  }
+  .gb-badge-due {
+    font-size: 8px; font-weight: 700; padding: 2px 7px; border-radius: 20px;
+    background: rgba(251,146,60,0.12); color: #fb923c; border: 1px solid rgba(251,146,60,0.25);
+  }
+
+  .gb-statsbar {
+    display: flex; gap: 12px; align-items: center;
+    padding: 8px 12px; border-radius: 10px;
+    background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.15);
+  }
+  .gb-stat { font-size: 9.5px; color: #64748b; }
+  .gb-stat strong { color: #a5b4fc; font-size: 10px; }
+  .gb-stat-div { width: 1px; height: 14px; background: rgba(255,255,255,0.08); }
+
+  /* ════════════════════════════
+     PRODUCT 2 — FAMBUDGET
+  ════════════════════════════ */
+  .fambudget { background: #0b1a1a; }
+  .fambudget .titlebar-badge { background: rgba(34,211,238,0.12); color: #22d3ee; border: 1px solid rgba(34,211,238,0.25); }
+
+  .fb-body { display: flex; flex: 1; gap: 0; overflow: hidden; }
+  .fb-left { width: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px 8px; gap: 10px; border-right: 1px solid rgba(255,255,255,0.06); }
+  .fb-donut-wrapper { position: relative; width: 90px; height: 90px; }
+  .fb-donut { transform: rotate(-90deg); }
+  .fb-donut-center {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .fb-donut-val { font-size: 13px; font-weight: 800; color: #e2e8f0; }
+  .fb-donut-label { font-size: 8px; color: #64748b; margin-top: 1px; }
+  .fb-balance { text-align: center; }
+  .fb-balance-label { font-size: 8px; color: #64748b; letter-spacing: 0.05em; text-transform: uppercase; }
+  .fb-balance-val { font-size: 12px; font-weight: 800; color: #22d3ee; margin-top: 2px; }
+
+  .fb-legend { display: flex; flex-direction: column; gap: 4px; width: 100%; }
+  .fb-legend-item { display: flex; align-items: center; gap: 5px; font-size: 8.5px; color: #64748b; }
+  .fb-legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+  .fb-right { flex: 1; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+  .fb-section-label { font-size: 9px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.08em; }
+  .fb-bars { display: flex; flex-direction: column; gap: 8px; }
+  .fb-bar-row { display: flex; flex-direction: column; gap: 3px; }
+  .fb-bar-header { display: flex; justify-content: space-between; font-size: 9px; }
+  .fb-bar-header span:first-child { color: #94a3b8; }
+  .fb-bar-header span:last-child { color: #e2e8f0; font-weight: 600; }
+  .fb-bar-track { height: 5px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+  .fb-bar-fill { height: 100%; border-radius: 3px; }
+
+  /* ════════════════════════════
+     PRODUCT 3 — GENXLINK
+  ════════════════════════════ */
+  .genxlink { background: #0c0f1f; }
+  .genxlink .titlebar-badge { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
+
+  .gl-body { flex: 1; display: flex; gap: 0; overflow: hidden; }
+  .gl-panel {
+    width: 180px; flex-shrink: 0;
+    padding: 16px 14px;
+    display: flex; flex-direction: column; gap: 12px;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .gl-panel-title { font-size: 10px; font-weight: 700; color: #e2e8f0; }
+  .gl-input-group { display: flex; flex-direction: column; gap: 5px; }
+  .gl-label { font-size: 8.5px; color: #475569; text-transform: uppercase; letter-spacing: 0.06em; }
+  .gl-input {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 7px; padding: 6px 10px;
+    font-size: 10px; color: #94a3b8;
+    font-family: 'Consolas', monospace;
+  }
+  .gl-connect-btn {
+    padding: 8px; border-radius: 8px; border: none; cursor: pointer;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    color: #fff; font-size: 11px; font-weight: 700;
+  }
+  .gl-status {
+    padding: 6px 10px; border-radius: 8px;
+    background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2);
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .gl-status-dot-row { display: flex; align-items: center; gap: 5px; }
+  .gl-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
+  .gl-status-text { font-size: 9px; color: #4ade80; font-weight: 600; }
+  .gl-status-sub { font-size: 8px; color: #64748b; padding-left: 11px; }
+  .gl-peers { display: flex; flex-direction: column; gap: 6px; }
+  .gl-peer {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 8px; border-radius: 7px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+  }
+  .gl-peer-avatar {
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; color: #fff;
+  }
+  .gl-peer-info { flex: 1; }
+  .gl-peer-name { font-size: 9px; color: #e2e8f0; font-weight: 600; }
+  .gl-peer-ip { font-size: 7.5px; color: #475569; font-family: monospace; }
+  .gl-peer-ping { font-size: 8px; color: #4ade80; font-weight: 700; }
+
+  .gl-screen {
+    flex: 1; position: relative;
+    background: #060913;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .gl-screen-blur {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    filter: blur(3px);
+  }
+  .gl-screen-overlay {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .gl-lock-icon { font-size: 28px; }
+  .gl-enc-badge {
+    font-size: 9px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+    background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3);
+    letter-spacing: 0.04em;
+  }
+  .gl-latency { font-size: 11px; font-weight: 800; color: #4ade80; }
+  .gl-screen-fakeui {
+    position: absolute; bottom: 12px; left: 12px; right: 12px;
+    height: 60px; border-radius: 8px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+    overflow: hidden; filter: blur(1.5px);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .gl-fake-bar { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.08); }
+
+  /* ════════════════════════════
+     PRODUCT 4 — NEURALCORE
+  ════════════════════════════ */
+  .neuralcore { background: #0e0b1a; }
+  .neuralcore .titlebar-badge { background: rgba(168,85,247,0.12); color: #c084fc; border: 1px solid rgba(168,85,247,0.25); }
+
+  .nc-body { flex: 1; display: flex; flex-direction: column; padding: 10px 14px; gap: 10px; overflow: hidden; }
+
+  .nc-top-bar { display: flex; justify-content: space-between; align-items: center; }
+  .nc-model-selector {
+    display: flex; align-items: center; gap: 6px;
+    padding: 5px 12px; border-radius: 20px;
+    background: rgba(168,85,247,0.1); border: 1px solid rgba(168,85,247,0.25);
+  }
+  .nc-model-dot { width: 6px; height: 6px; border-radius: 50%; background: #a855f7; }
+  .nc-model-name { font-size: 10px; font-weight: 700; color: #c084fc; }
+  .nc-local-badge {
+    font-size: 8.5px; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+    background: rgba(34,197,94,0.1); color: #4ade80; border: 1px solid rgba(34,197,94,0.25);
+  }
+
+  .nc-terminal {
+    flex: 1; border-radius: 10px; overflow: hidden;
+    background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.06);
+    padding: 10px 12px; display: flex; flex-direction: column; gap: 4px;
+  }
+  .nc-term-line { font-family: 'Consolas', 'Courier New', monospace; font-size: 9.5px; line-height: 1.55; }
+  .nc-term-prompt { color: #a855f7; }
+  .nc-term-cmd { color: #e2e8f0; }
+  .nc-term-out { color: #94a3b8; }
+  .nc-term-highlight { color: #22d3ee; }
+  .nc-term-cursor {
+    display: inline-block; width: 6px; height: 11px;
+    background: #a855f7; margin-left: 2px; vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  .nc-perf-bar {
+    display: flex; gap: 10px; align-items: center;
+    padding: 6px 12px; border-radius: 8px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  }
+  .nc-perf-item { display: flex; align-items: center; gap: 5px; }
+  .nc-perf-label { font-size: 8.5px; color: #475569; }
+  .nc-perf-val { font-size: 9px; font-weight: 700; color: #c084fc; }
+  .nc-perf-mini-bar { height: 3px; width: 36px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+  .nc-perf-mini-fill { height: 100%; border-radius: 2px; }
+  .nc-div { width: 1px; height: 14px; background: rgba(255,255,255,0.06); }
+  .nc-tokens { font-size: 8px; color: #64748b; margin-left: auto; }
+  .nc-tokens strong { color: #4ade80; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ GENXBILL ═══════════════════ -->
+<div class="window genxbill">
+  <div class="titlebar">
+    <div class="dots">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </div>
+    <div class="titlebar-text">GenXBill v1.0 — Billing & Inventory</div>
+    <div class="titlebar-badge">🔒 OFFLINE</div>
+  </div>
+  <div class="window-body">
+    <div class="gb-sidebar">
+      <div class="gb-sidebar-icon active">🧾</div>
+      <div class="gb-sidebar-icon inactive">📦</div>
+      <div class="gb-sidebar-icon inactive">👥</div>
+      <div class="gb-sidebar-icon inactive">📊</div>
+      <div class="gb-sidebar-icon inactive">⚙️</div>
+    </div>
+    <div class="gb-main">
+      <div class="gb-header-row">
+        <div class="gb-title">Invoices</div>
+        <button class="gb-create-btn">+ Create Invoice</button>
+      </div>
+      <table class="gb-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Rate</th>
+            <th>Status</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Widget Pro Set</td>
+            <td>12</td>
+            <td>₹850</td>
+            <td><span class="gb-badge-paid">Paid</span></td>
+            <td>₹10,200</td>
+          </tr>
+          <tr>
+            <td>LED Panel 18W</td>
+            <td>5</td>
+            <td>₹1,400</td>
+            <td><span class="gb-badge-paid">Paid</span></td>
+            <td>₹7,000</td>
+          </tr>
+          <tr>
+            <td>Copper Wire (50m)</td>
+            <td>8</td>
+            <td>₹680</td>
+            <td><span class="gb-badge-due">Due</span></td>
+            <td>₹5,440</td>
+          </tr>
+          <tr>
+            <td>Switch Board 6A</td>
+            <td>20</td>
+            <td>₹129</td>
+            <td><span class="gb-badge-paid">Paid</span></td>
+            <td>₹2,580</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="gb-statsbar">
+        <div class="gb-stat">Total: <strong>₹45,230</strong></div>
+        <div class="gb-stat-div"></div>
+        <div class="gb-stat">GST: <strong>₹4,120</strong></div>
+        <div class="gb-stat-div"></div>
+        <div class="gb-stat">Invoices: <strong>12</strong></div>
+        <div class="gb-stat-div"></div>
+        <div class="gb-stat">Local DB ✓</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ FAMBUDGET ═══════════════════ -->
+<div class="window fambudget">
+  <div class="titlebar">
+    <div class="dots">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </div>
+    <div class="titlebar-text">FamBudget v5.0 — Family Finance Manager</div>
+    <div class="titlebar-badge">🛡️ PRIVATE</div>
+  </div>
+  <div class="window-body fb-body">
+    <div class="fb-left">
+      <div class="fb-donut-wrapper">
+        <svg class="fb-donut" width="90" height="90" viewBox="0 0 90 90">
+          <circle cx="45" cy="45" r="35" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="10"/>
+          <!-- Allocated 50% = 110 of 220 circumference -->
+          <circle cx="45" cy="45" r="35" fill="none" stroke="#6366f1" stroke-width="10" stroke-dasharray="110 110" stroke-dashoffset="0" stroke-linecap="round"/>
+          <!-- Spent 30% = 66 -->
+          <circle cx="45" cy="45" r="35" fill="none" stroke="#22d3ee" stroke-width="10" stroke-dasharray="66 154" stroke-dashoffset="-110" stroke-linecap="round"/>
+          <!-- Saved 20% = 44 -->
+          <circle cx="45" cy="45" r="35" fill="none" stroke="#4ade80" stroke-width="10" stroke-dasharray="44 176" stroke-dashoffset="-176" stroke-linecap="round"/>
+        </svg>
+        <div class="fb-donut-center">
+          <div class="fb-donut-val">74%</div>
+          <div class="fb-donut-label">Used</div>
+        </div>
+      </div>
+      <div class="fb-balance">
+        <div class="fb-balance-label">Balance</div>
+        <div class="fb-balance-val">₹1,24,500</div>
+      </div>
+      <div class="fb-legend">
+        <div class="fb-legend-item"><div class="fb-legend-dot" style="background:#6366f1"></div>Allocated 50%</div>
+        <div class="fb-legend-item"><div class="fb-legend-dot" style="background:#22d3ee"></div>Spent 30%</div>
+        <div class="fb-legend-item"><div class="fb-legend-dot" style="background:#4ade80"></div>Saved 20%</div>
+      </div>
+    </div>
+    <div class="fb-right">
+      <div class="fb-section-label">Monthly Budget</div>
+      <div class="fb-bars">
+        <div class="fb-bar-row">
+          <div class="fb-bar-header"><span>🏠 Housing</span><span>₹18,000</span></div>
+          <div class="fb-bar-track"><div class="fb-bar-fill" style="width:72%;background:linear-gradient(90deg,#6366f1,#818cf8)"></div></div>
+        </div>
+        <div class="fb-bar-row">
+          <div class="fb-bar-header"><span>🛒 Groceries</span><span>₹9,400</span></div>
+          <div class="fb-bar-track"><div class="fb-bar-fill" style="width:54%;background:linear-gradient(90deg,#22d3ee,#38bdf8)"></div></div>
+        </div>
+        <div class="fb-bar-row">
+          <div class="fb-bar-header"><span>🚗 Transport</span><span>₹4,200</span></div>
+          <div class="fb-bar-track"><div class="fb-bar-fill" style="width:38%;background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div></div>
+        </div>
+        <div class="fb-bar-row">
+          <div class="fb-bar-header"><span>📚 Education</span><span>₹7,800</span></div>
+          <div class="fb-bar-track"><div class="fb-bar-fill" style="width:62%;background:linear-gradient(90deg,#4ade80,#86efac)"></div></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:auto">
+        <div style="flex:1;padding:7px;border-radius:8px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);text-align:center">
+          <div style="font-size:9px;color:#6366f1;font-weight:700">🎯 Goal</div>
+          <div style="font-size:9px;color:#94a3b8;margin-top:2px">Emergency Fund</div>
+          <div style="font-size:10px;font-weight:700;color:#c7d2fe">68%</div>
+        </div>
+        <div style="flex:1;padding:7px;border-radius:8px;background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.2);text-align:center">
+          <div style="font-size:9px;color:#22d3ee;font-weight:700">📈 Net</div>
+          <div style="font-size:9px;color:#94a3b8;margin-top:2px">This Month</div>
+          <div style="font-size:10px;font-weight:700;color:#22d3ee">+₹12,450</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ GENXLINK ═══════════════════ -->
+<div class="window genxlink">
+  <div class="titlebar">
+    <div class="dots">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </div>
+    <div class="titlebar-text">GenXLink — Secure Remote Desktop</div>
+    <div class="titlebar-badge">🔐 E2E</div>
+  </div>
+  <div class="window-body gl-body">
+    <div class="gl-panel">
+      <div class="gl-panel-title">Connect</div>
+      <div class="gl-input-group">
+        <div class="gl-label">Device ID / IP</div>
+        <div class="gl-input">192.168.1.104</div>
+      </div>
+      <div class="gl-input-group">
+        <div class="gl-label">Auth Token</div>
+        <div class="gl-input" style="letter-spacing:2px">• • • • • • • •</div>
+      </div>
+      <button class="gl-connect-btn">⚡ Connect</button>
+      <div class="gl-status">
+        <div class="gl-status-dot-row">
+          <div class="gl-status-dot"></div>
+          <div class="gl-status-text">Encrypted</div>
+        </div>
+        <div class="gl-status-sub">ChaCha20 · 12ms latency</div>
+      </div>
+      <div class="gl-section-label" style="font-size:8px;color:#334155;text-transform:uppercase;letter-spacing:.06em">Recent</div>
+      <div class="gl-peers">
+        <div class="gl-peer">
+          <div class="gl-peer-avatar" style="background:#6366f1">RK</div>
+          <div class="gl-peer-info">
+            <div class="gl-peer-name">Rajesh-PC</div>
+            <div class="gl-peer-ip">10.0.0.14</div>
+          </div>
+          <div class="gl-peer-ping">8ms</div>
+        </div>
+        <div class="gl-peer">
+          <div class="gl-peer-avatar" style="background:#22d3ee;color:#0a0f1e">PM</div>
+          <div class="gl-peer-info">
+            <div class="gl-peer-name">Office-Main</div>
+            <div class="gl-peer-ip">10.0.0.22</div>
+          </div>
+          <div class="gl-peer-ping">15ms</div>
+        </div>
+      </div>
+    </div>
+    <div class="gl-screen">
+      <div class="gl-screen-blur"></div>
+      <div class="gl-screen-overlay">
+        <div class="gl-lock-icon">🔒</div>
+        <div class="gl-enc-badge">End-to-End Encrypted</div>
+        <div class="gl-latency">12ms</div>
+      </div>
+      <div class="gl-screen-fakeui">
+        <div class="gl-fake-bar" style="width:80px"></div>
+        <div class="gl-fake-bar" style="width:50px"></div>
+        <div class="gl-fake-bar" style="width:70px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ NEURALCORE ═══════════════════ -->
+<div class="window neuralcore">
+  <div class="titlebar">
+    <div class="dots">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+    </div>
+    <div class="titlebar-text">NeuralCore — Edge AI Runtime</div>
+    <div class="titlebar-badge">🧠 LOCAL</div>
+  </div>
+  <div class="window-body nc-body">
+    <div class="nc-top-bar">
+      <div class="nc-model-selector">
+        <div class="nc-model-dot"></div>
+        <div class="nc-model-name">Llama 3 8B</div>
+        <span style="font-size:8px;color:#64748b;margin-left:4px">▼</span>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center">
+        <div style="font-size:8px;color:#475569">Context: 4096</div>
+        <div class="nc-local-badge">✓ 100% Local</div>
+      </div>
+    </div>
+    <div class="nc-terminal">
+      <div class="nc-term-line"><span class="nc-term-prompt">user › </span><span class="nc-term-cmd">Explain what local-first AI means</span></div>
+      <div class="nc-term-line" style="margin-top:4px"><span class="nc-term-prompt" style="color:#a855f7">llama › </span></div>
+      <div class="nc-term-line nc-term-out">Local-first AI means the model runs <span class="nc-term-highlight">entirely</span></div>
+      <div class="nc-term-line nc-term-out">on your device. No data is ever sent to</div>
+      <div class="nc-term-line nc-term-out">external servers. Your prompts, context,</div>
+      <div class="nc-term-line nc-term-out">and outputs stay <span class="nc-term-highlight">100% private</span>.</div>
+      <div class="nc-term-line">
+        <span class="nc-term-out">Inference speed: </span>
+        <span class="nc-term-highlight">42 tok/s</span>
+        <span class="nc-term-cursor"></span>
+      </div>
+    </div>
+    <div class="nc-perf-bar">
+      <div class="nc-perf-item">
+        <div class="nc-perf-label">CPU</div>
+        <div class="nc-perf-mini-bar"><div class="nc-perf-mini-fill" style="width:34%;background:#a855f7"></div></div>
+        <div class="nc-perf-val">34%</div>
+      </div>
+      <div class="nc-div"></div>
+      <div class="nc-perf-item">
+        <div class="nc-perf-label">RAM</div>
+        <div class="nc-perf-mini-bar"><div class="nc-perf-mini-fill" style="width:52%;background:#6366f1"></div></div>
+        <div class="nc-perf-val">2.1GB</div>
+      </div>
+      <div class="nc-div"></div>
+      <div class="nc-perf-item">
+        <div class="nc-perf-label">Temp</div>
+        <div class="nc-perf-mini-bar"><div class="nc-perf-mini-fill" style="width:45%;background:#22d3ee"></div></div>
+        <div class="nc-perf-val">61°C</div>
+      </div>
+      <div class="nc-tokens"><strong>1,248</strong> tok generated</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

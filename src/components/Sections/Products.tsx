@@ -72,7 +72,7 @@ const products = [
             '/images/genxlink_home_1.jpg'
         ],
         tags: ['Remote Desktop', 'Rust', 'Security'],
-        downloadLink: '#',
+        downloadLink: '',
         upcoming: true
     },
     {
@@ -84,7 +84,7 @@ const products = [
         image: null,
         screenshots: [],
         tags: ['AI', 'Hardware', 'Edge Computing'],
-        downloadLink: '#',
+        downloadLink: '',
         upcoming: false
     }
 ];

@@ -86,7 +86,7 @@ const Contact = () => {
                     <Typography variant="overline" sx={{ color: 'secondary.main', fontWeight: 600, letterSpacing: '0.2em' }}>
                         Contact Us
                     </Typography>
-                    <Typography variant="h2" component="h1" sx={{ mt: 1, mb: 4, fontWeight: 800 }}>
+                    <Typography variant="h2" component="h2" sx={{ mt: 1, mb: 4, fontWeight: 800 }}>
                         Let's Build the <br />
                         <Box component="span" sx={{ color: 'primary.main' }}>Impossible.</Box>
                     </Typography>
