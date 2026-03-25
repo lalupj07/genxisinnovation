@@ -22,7 +22,6 @@ import Insights from './components/Sections/Insights';
 import About from './components/Sections/About';
 import Contact from './components/Sections/Contact';
 import PrivacyPolicy from './components/Pages/PrivacyPolicy';
-import Pricing from './components/Pages/Pricing';
 import SmoothScroll from './components/UI/SmoothScroll';
 import AnimatedPage from './components/UI/AnimatedPage';
 import ChatBot from './components/UI/ChatBot';
@@ -35,7 +34,6 @@ const PAGE_TITLES: Record<string, string> = {
   '/about': 'About Us | GenXis Innovations',
   '/contact': 'Contact Us | GenXis Innovations',
   '/privacy': 'Privacy Policy | GenXis Innovations',
-  '/pricing': 'GenXBill Pricing — Free, Pro & Enterprise | GenXis Innovations',
 };
 
 /** Homepage — all redesigned sections */
@@ -69,7 +67,6 @@ const AnimatedRoutes = () => {
         <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
         <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
         <Route path="/privacy" element={<AnimatedPage><PrivacyPolicy /></AnimatedPage>} />
-        <Route path="/pricing" element={<AnimatedPage><Pricing /></AnimatedPage>} />
       </Routes>
     </AnimatePresence>
   );
