@@ -28,12 +28,12 @@ const genxbillRows = [
 ];
 
 const containerVariants: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
+  hidden: { opacity: 1 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 1, y: 0 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
@@ -259,7 +259,7 @@ const Hero = () => {
             }}
           >
             <motion.div
-              initial={{ opacity: 0, x: 40, scale: 0.96 }}
+              initial={{ opacity: 1, x: 0, scale: 1 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
               style={{ width: '100%', maxWidth: 480, position: 'relative' }}
@@ -402,7 +402,7 @@ const Hero = () => {
                         {genxbillRows.map((row, i) => (
                           <motion.div
                             key={i}
-                            initial={{ opacity: 0, x: -10 }}
+                            initial={{ opacity: 1, x: 0 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.5 + i * 0.15, duration: 0.4 }}
                           >
