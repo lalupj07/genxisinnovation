@@ -27,8 +27,8 @@ export const ColorModeProvider = ({ children }: { children: ReactNode }) => {
     );
 
     const theme = useMemo(
-        () => responsiveFontSizes(createTheme(getDesignTokens(mode))),
-        [mode],
+        () => responsiveFontSizes(createTheme(getDesignTokens())),
+        [],
     );
 
     return (

@@ -201,10 +201,10 @@ const ChatBot: React.FC = () => {
     ]);
     const bottomRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const msgIdRef = useRef(1);
 
     useEffect(() => {
         if (open) {
-            setUnread(0);
             setTimeout(() => inputRef.current?.focus(), 300);
         }
     }, [open]);
@@ -218,8 +218,9 @@ const ChatBot: React.FC = () => {
     const sendMessage = (text: string) => {
         if (!text.trim()) return;
 
+        const userId = String(msgIdRef.current++);
         const userMsg: Message = {
-            id: Date.now().toString(),
+            id: userId,
             role: 'user',
             text: text.trim(),
             timestamp: new Date(),
@@ -231,7 +232,7 @@ const ChatBot: React.FC = () => {
         setTimeout(() => {
             const { answer, followUp } = getBotResponse(text);
             const botMsg: Message = {
-                id: (Date.now() + 1).toString(),
+                id: String(msgIdRef.current++),
                 role: 'bot',
                 text: answer,
                 followUp,
@@ -240,7 +241,7 @@ const ChatBot: React.FC = () => {
             setMessages(prev => [...prev, botMsg]);
             setIsTyping(false);
             if (!open) setUnread(n => n + 1);
-        }, 800 + Math.random() * 600);
+        }, 1100);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -509,7 +510,7 @@ const ChatBot: React.FC = () => {
                         component="button"
                         id="chatbot-toggle-button"
                         aria-label="Open GenXis AI chatbot"
-                        onClick={() => { setOpen(v => !v); setMinimized(false); }}
+                        onClick={() => { setOpen(v => !v); setMinimized(false); if (!open) setUnread(0); }}
                         sx={{
                             width: 58, height: 58, borderRadius: '50%', border: 'none',
                             cursor: 'pointer', position: 'relative',

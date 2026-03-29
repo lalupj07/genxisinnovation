@@ -11,7 +11,7 @@ const colors = {
   border: 'rgba(99, 102, 241, 0.2)',
 };
 
-export const getDesignTokens = (_mode: PaletteMode) => ({
+export const getDesignTokens = () => ({
   palette: {
     mode: 'dark' as PaletteMode,
     primary: { main: colors.primary },
@@ -129,5 +129,5 @@ export const getDesignTokens = (_mode: PaletteMode) => ({
   },
 });
 
-export const createAppTheme = (mode: PaletteMode) =>
-  responsiveFontSizes(createTheme(getDesignTokens(mode)));
+export const createAppTheme = () =>
+  responsiveFontSizes(createTheme(getDesignTokens()));
