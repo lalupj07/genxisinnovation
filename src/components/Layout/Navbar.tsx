@@ -263,6 +263,7 @@ const Navbar = () => {
             <IconButton
               id="navbar-mobile-menu-btn"
               onClick={handleDrawerToggle}
+              aria-label="open navigation menu"
               sx={{
                 color: '#94a3b8',
                 border: '1px solid rgba(99,102,241,0.2)',
@@ -283,6 +284,7 @@ const Navbar = () => {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{ keepMounted: true }}
+        aria-label="mobile navigation"
         sx={{
           display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 300, background: 'transparent' },

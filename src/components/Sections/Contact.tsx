@@ -49,10 +49,10 @@ const Contact = () => {
 
         if (form.current) {
             emailjs.sendForm(
-                'service_dpg9fsl',
-                'template_jpaeivs',
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
                 form.current,
-                'ijHfOB8yOR2qIqCei'
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
             )
                 .then((result) => {
                     console.log(result.text);

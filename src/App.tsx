@@ -1,30 +1,39 @@
-import { useEffect } from 'react';
-import { CssBaseline, Box } from '@mui/material';
+import { lazy, Suspense, useEffect } from 'react';
+import { CssBaseline, Box, CircularProgress } from '@mui/material';
 import { ColorModeProvider } from './context/ColorModeContext';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
 
-// Homepage sections
+// Homepage core components
 import Hero from './components/Sections/Hero';
 import SocialProofBar from './components/Sections/SocialProofBar';
-import ProductsGrid from './components/Sections/ProductsGrid';
-import WhyLocalFirst from './components/Sections/WhyLocalFirst';
-import ServicesStrip from './components/Sections/ServicesStrip';
-import Testimonials from './components/Sections/Testimonials';
 
-// Other pages / sections
-import TechStack from './components/Sections/TechStack';
-import Services from './components/Sections/Services';
-import Products from './components/Sections/Products';
-import Insights from './components/Sections/Insights';
-import About from './components/Sections/About';
-import Contact from './components/Sections/Contact';
-import PrivacyPolicy from './components/Pages/PrivacyPolicy';
+// Lazy loaded page sections / pages
+const ProductsGrid = lazy(() => import('./components/Sections/ProductsGrid'));
+const WhyLocalFirst = lazy(() => import('./components/Sections/WhyLocalFirst'));
+const ServicesStrip = lazy(() => import('./components/Sections/ServicesStrip'));
+const Testimonials = lazy(() => import('./components/Sections/Testimonials'));
+const TechStack = lazy(() => import('./components/Sections/TechStack'));
+
+const Services = lazy(() => import('./components/Sections/Services'));
+const Products = lazy(() => import('./components/Sections/Products'));
+const Insights = lazy(() => import('./components/Sections/Insights'));
+const About = lazy(() => import('./components/Sections/About'));
+const Contact = lazy(() => import('./components/Sections/Contact'));
+const PrivacyPolicy = lazy(() => import('./components/Pages/PrivacyPolicy'));
+
+// UI components
 import SmoothScroll from './components/UI/SmoothScroll';
 import AnimatedPage from './components/UI/AnimatedPage';
 import ChatBot from './components/UI/ChatBot';
+
+const LoadingSpinner = () => (
+  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', bgcolor: '#0a0f1e' }}>
+    <CircularProgress size={40} thickness={4} sx={{ color: 'primary.main' }} />
+  </Box>
+);
 
 const PAGE_TITLES: Record<string, string> = {
   '/': 'GenXis Innovations | Privacy-First, Local-First Software Lab — Kerala, India',
@@ -58,17 +67,19 @@ const AnimatedRoutes = () => {
   }, [location.pathname]);
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<AnimatedPage><HomePage /></AnimatedPage>} />
-        <Route path="/products" element={<AnimatedPage><Products /></AnimatedPage>} />
-        <Route path="/services" element={<AnimatedPage><Services /></AnimatedPage>} />
-        <Route path="/insights" element={<AnimatedPage><Insights /></AnimatedPage>} />
-        <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
-        <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
-        <Route path="/privacy" element={<AnimatedPage><PrivacyPolicy /></AnimatedPage>} />
-      </Routes>
-    </AnimatePresence>
+    <Suspense fallback={<LoadingSpinner />}>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<AnimatedPage><HomePage /></AnimatedPage>} />
+          <Route path="/products" element={<AnimatedPage><Products /></AnimatedPage>} />
+          <Route path="/services" element={<AnimatedPage><Services /></AnimatedPage>} />
+          <Route path="/insights" element={<AnimatedPage><Insights /></AnimatedPage>} />
+          <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
+          <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
+          <Route path="/privacy" element={<AnimatedPage><PrivacyPolicy /></AnimatedPage>} />
+        </Routes>
+      </AnimatePresence>
+    </Suspense>
   );
 };
 
