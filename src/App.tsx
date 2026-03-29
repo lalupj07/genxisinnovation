@@ -29,11 +29,7 @@ import SmoothScroll from './components/UI/SmoothScroll';
 import AnimatedPage from './components/UI/AnimatedPage';
 import ChatBot from './components/UI/ChatBot';
 
-const LoadingSpinner = () => (
-  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', bgcolor: '#0a0f1e' }}>
-    <CircularProgress size={40} thickness={4} sx={{ color: 'primary.main' }} />
-  </Box>
-);
+
 
 const PAGE_TITLES: Record<string, string> = {
   '/': 'GenXis Innovations | Privacy-First, Local-First Software Lab — Kerala, India',
@@ -45,16 +41,23 @@ const PAGE_TITLES: Record<string, string> = {
   '/privacy': 'Privacy Policy | GenXis Innovations',
 };
 
-/** Homepage — all redesigned sections */
+/** Tiny inline spinner for individual lazy sections */
+const SectionSpinner = () => (
+  <Box sx={{ display: 'flex', justifyContent: 'center', py: 8, bgcolor: '#0a0f1e' }}>
+    <CircularProgress size={28} thickness={4} sx={{ color: 'primary.main' }} />
+  </Box>
+);
+
+/** Homepage — each lazy section has its own Suspense so Hero is never blocked */
 const HomePage = () => (
   <Box>
     <Hero />
     <SocialProofBar />
-    <ProductsGrid />
-    <WhyLocalFirst />
-    <ServicesStrip />
-    <Testimonials />
-    <TechStack />
+    <Suspense fallback={<SectionSpinner />}><ProductsGrid /></Suspense>
+    <Suspense fallback={<SectionSpinner />}><WhyLocalFirst /></Suspense>
+    <Suspense fallback={<SectionSpinner />}><ServicesStrip /></Suspense>
+    <Suspense fallback={<SectionSpinner />}><Testimonials /></Suspense>
+    <Suspense fallback={<SectionSpinner />}><TechStack /></Suspense>
   </Box>
 );
 
@@ -67,19 +70,17 @@ const AnimatedRoutes = () => {
   }, [location.pathname]);
 
   return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<AnimatedPage><HomePage /></AnimatedPage>} />
-          <Route path="/products" element={<AnimatedPage><Products /></AnimatedPage>} />
-          <Route path="/services" element={<AnimatedPage><Services /></AnimatedPage>} />
-          <Route path="/insights" element={<AnimatedPage><Insights /></AnimatedPage>} />
-          <Route path="/about" element={<AnimatedPage><About /></AnimatedPage>} />
-          <Route path="/contact" element={<AnimatedPage><Contact /></AnimatedPage>} />
-          <Route path="/privacy" element={<AnimatedPage><PrivacyPolicy /></AnimatedPage>} />
-        </Routes>
-      </AnimatePresence>
-    </Suspense>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<AnimatedPage><HomePage /></AnimatedPage>} />
+        <Route path="/products"  element={<Suspense fallback={<SectionSpinner />}><AnimatedPage><Products /></AnimatedPage></Suspense>} />
+        <Route path="/services"  element={<Suspense fallback={<SectionSpinner />}><AnimatedPage><Services /></AnimatedPage></Suspense>} />
+        <Route path="/insights"  element={<Suspense fallback={<SectionSpinner />}><AnimatedPage><Insights /></AnimatedPage></Suspense>} />
+        <Route path="/about"     element={<Suspense fallback={<SectionSpinner />}><AnimatedPage><About /></AnimatedPage></Suspense>} />
+        <Route path="/contact"   element={<Suspense fallback={<SectionSpinner />}><AnimatedPage><Contact /></AnimatedPage></Suspense>} />
+        <Route path="/privacy"   element={<Suspense fallback={<SectionSpinner />}><AnimatedPage><PrivacyPolicy /></AnimatedPage></Suspense>} />
+      </Routes>
+    </AnimatePresence>
   );
 };
 
