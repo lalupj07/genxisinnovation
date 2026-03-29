@@ -2,21 +2,15 @@ import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 const pageVariants = {
-    initial: {
-        opacity: 0,
-        y: 20,
-        filter: 'blur(10px)',
-    },
-    in: {
-        opacity: 1,
-        y: 0,
-        filter: 'blur(0px)',
-    },
-    out: {
-        opacity: 0,
-        y: -20,
-        filter: 'blur(10px)',
-    }
+    initial: { opacity: 0, y: 16 },
+    in:      { opacity: 1, y: 0  },
+    out:     { opacity: 0, y: -8 },
+};
+
+const pageTransition = {
+    type: 'tween' as const,
+    ease: 'easeOut' as const,
+    duration: 0.4,
 };
 
 const AnimatedPage = ({ children }: { children: ReactNode }) => {
@@ -26,7 +20,7 @@ const AnimatedPage = ({ children }: { children: ReactNode }) => {
             animate="in"
             exit="out"
             variants={pageVariants}
-            transition={{ type: 'tween', ease: 'anticipate' as const, duration: 0.5 }}
+            transition={pageTransition}
             style={{ width: '100%' }}
         >
             {children}
