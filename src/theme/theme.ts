@@ -129,5 +129,6 @@ export const getDesignTokens = () => ({
   },
 });
 
-export const createAppTheme = () =>
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const createAppTheme = (_mode: PaletteMode) =>
   responsiveFontSizes(createTheme(getDesignTokens()));

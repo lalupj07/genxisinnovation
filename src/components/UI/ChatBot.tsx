@@ -201,7 +201,6 @@ const ChatBot: React.FC = () => {
     ]);
     const bottomRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-    const msgIdRef = useRef(1);
 
     useEffect(() => {
         if (open) {
@@ -218,9 +217,11 @@ const ChatBot: React.FC = () => {
     const sendMessage = (text: string) => {
         if (!text.trim()) return;
 
-        const userId = String(msgIdRef.current++);
+        // Generate ID and timestamp BEFORE creating the object
+        // eslint-disable-next-line react-hooks/purity
+        const now = Date.now();
         const userMsg: Message = {
-            id: userId,
+            id: now.toString(),
             role: 'user',
             text: text.trim(),
             timestamp: new Date(),
@@ -229,10 +230,14 @@ const ChatBot: React.FC = () => {
         setInput('');
         setIsTyping(true);
 
+        // Calculate random delay here (in event handler, not render)
+        // eslint-disable-next-line react-hooks/purity
+        const randomDelay = 800 + Math.random() * 600;
+
         setTimeout(() => {
             const { answer, followUp } = getBotResponse(text);
             const botMsg: Message = {
-                id: String(msgIdRef.current++),
+                id: (now + 1).toString(),
                 role: 'bot',
                 text: answer,
                 followUp,
@@ -241,7 +246,7 @@ const ChatBot: React.FC = () => {
             setMessages(prev => [...prev, botMsg]);
             setIsTyping(false);
             if (!open) setUnread(n => n + 1);
-        }, 1100);
+        }, randomDelay);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
